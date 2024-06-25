@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d18ac57f9a9dc48b58d5471c3d8103, type: 3}
+  m_Name: UnitDetails_Knight
+  m_EditorClassIdentifier: 
+  image: {fileID: 21300000, guid: 99da453598aec384887947def081f64b, type: 3}
+  unitName: Knight
+  unitDescription: A fellow brave knight
+  isRangeUnit: 0
+  attackProjectile: {fileID: 0}
+  manaCost: 50
+  cooldownInterval: 5
+  attackSpeed: 0.7
+  strikesPerAttack: 1
+  attackAnimationDelay: 1.1
+  critStrikeChance: 0
+  critStrikeDamage: 0
+  attackRange: 1
+  movementSpeed: 10
+  animationController: {fileID: 22100000, guid: f3afdcf2e6c618c4cb07c8c00bfeffa9, type: 2}
