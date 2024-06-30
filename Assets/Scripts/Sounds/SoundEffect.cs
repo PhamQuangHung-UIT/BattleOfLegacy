@@ -8,13 +8,14 @@ public class SoundEffect : MonoBehaviour
 {
     private AudioSource source;
 
-    private void Start()
+    private void Awake()
     {
         source = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
+        StaticEventHandler.OnSFXVolumeChange += StaticEventHandler_OnSFXVolumeChange;
         if (source != null)
         {
             source.Play();
@@ -23,10 +24,16 @@ public class SoundEffect : MonoBehaviour
 
     private void OnDisable()
     {
+        StaticEventHandler.OnSFXVolumeChange -= StaticEventHandler_OnSFXVolumeChange;
         if (source != null)
         {
             source.Stop();
         }
+    }
+
+    private void StaticEventHandler_OnSFXVolumeChange(OnVolumeChangeArgs args)
+    {
+        source.volume *= args.newVolume / args.oldVolume;
     }
 
     public void SetSound(SoundEffectSO sound)

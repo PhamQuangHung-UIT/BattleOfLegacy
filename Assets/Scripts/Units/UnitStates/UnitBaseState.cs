@@ -14,8 +14,6 @@ public class UnitBaseState
 
     public UnitAI ai;
 
-    private readonly int enemyLayer = LayerMask.NameToLayer("Enemy");
-
 
     public UnitBaseState(Unit unit)
     {
@@ -53,7 +51,7 @@ public class UnitBaseState
     /// <summary>
     /// Exit the unit state to get to next state. Use this method to stop state animation
     /// </summary>
-    public virtual void Exit() => currentStateEvent = StateEvent.Exit;
+    public virtual void Exit() => currentStateEvent = StateEvent.Enter;
 
     /// <summary>
     /// Base method use in the state machine
@@ -65,6 +63,7 @@ public class UnitBaseState
         {
             case StateEvent.Enter:
                 Enter();
+                Update();
                 return this;
             case StateEvent.Update:
                 Update();
@@ -77,11 +76,6 @@ public class UnitBaseState
 
     protected bool IsOpponent(Unit u)
     {
-        return ((u.gameObject.layer ^ unit.gameObject.layer) & enemyLayer) != 0;
-    }
-
-    protected bool IsEnemy(Unit u)
-    {
-        return (u.gameObject.layer & enemyLayer) != 0;
+        return unit.isEnemy ^ u.isEnemy;
     }
 }

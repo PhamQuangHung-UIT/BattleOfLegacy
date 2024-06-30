@@ -22,6 +22,6 @@ public class DeadState : UnitBaseState
     public override void Exit()
     {
         base.Exit();
-        animEvent.CallOnStopUnitAnim(UnitState.Dead);
+        //animEvent.CallOnStopUnitAnim(UnitState.Dead);
     }
 }

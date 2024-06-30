@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [DisallowMultipleComponent]
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
@@ -23,6 +24,12 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public void Save(int selectedLevel)
     {
         data.selectedLevel = selectedLevel;
+        StorageUtils.Save(data, fileName);
+    }
+
+    public void CompleteLevel()
+    {
+        data.currentLevel = currentLevelIndex;
         StorageUtils.Save(data, fileName);
     }
 }

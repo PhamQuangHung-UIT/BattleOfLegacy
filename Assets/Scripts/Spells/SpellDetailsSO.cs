@@ -5,10 +5,20 @@ using UnityEngine;
 public class SpellDetailsSO : ScriptableObject
 {
     [System.Serializable]
-    public struct SpellAttribute
+    public class SpellAttribute
     {
         public string name;
         public float value;
+        public Color displayColor;
+        public Sprite icon;
+    }
+    [System.Serializable]
+    public struct SpellAttributes
+    {
+        public bool isGoldUpgrade;
+        public bool isGemUpgrade;
+        public int cost;
+        public SpellAttribute[] attributeList;
     }
     #region Header
     [Header("Basic info")]
@@ -46,7 +56,7 @@ public class SpellDetailsSO : ScriptableObject
     #region Tooltips
     [Tooltip("List of spell upgrades")]
     #endregion
-    public SpellAttribute[][] spellUpgradeList;
+    public SpellAttributes[] spellUpgradeList;
 
     #region Tooltip
     [Tooltip("Spell prefab")]
@@ -55,26 +65,34 @@ public class SpellDetailsSO : ScriptableObject
 
     [HideInInspector] public List<Dictionary<string, float>> spellAttributeMapPerLevel;
 
-    private void Awake()
+    public void Init()
     {
         spellAttributeMapPerLevel = new();
         foreach (var spellAttributes in spellUpgradeList)
         {
             Dictionary<string, float> dict = new();
-            foreach (var attribute in spellAttributes)
+            foreach (var attribute in spellAttributes.attributeList)
             {
                 dict.Add(attribute.name, attribute.value);
             }
             spellAttributeMapPerLevel.Add(dict);
         }
     }
-
+    #region UNITY EDITOR
 #if UNITY_EDITOR
     public void OnValidate()
     {
         ValidateUtilities.AssertNotNull(spellName, "spellName " + nameof(SpellDetailsSO));
         ValidateUtilities.AssertNotNull(spellPrefab, "spellPrefab" + nameof(SpellDetailsSO));
         ValidateUtilities.AssertEmptyList(spellUpgradeList);
+        if (spellUpgradeList != null)
+        {
+            foreach (var upgrade in spellUpgradeList)
+            {
+                ValidateUtilities.Assert(upgrade.isGoldUpgrade ^ upgrade.isGemUpgrade);
+            }
+        }
     }
 #endif
+    #endregion
 }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69478c4046e834c4ab093d2d23b059c2, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: 
+  id: 2
+  firstTimeRewardedGold: 1250
+  replayRewardedGold: 250
+  rewardedGems: 1
+  currentLevelTheme: {fileID: 11400000, guid: d68677607e2ec2d4a93dd94de3d9ea74, type: 2}
+  enemySpawnConsistent: 1
+  enemySpawnableList:
+  - {fileID: 11400000, guid: aa8e3421ff6172b44b1cf85cc2db468d, type: 2}
+  - {fileID: 11400000, guid: aa8e3421ff6172b44b1cf85cc2db468d, type: 2}
+  enemyStatueMaxHealth: 250
+  enemyMaxMana: 200
+  enemyManaPerSecond: 10

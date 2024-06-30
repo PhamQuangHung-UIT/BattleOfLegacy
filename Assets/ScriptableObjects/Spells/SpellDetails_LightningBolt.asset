@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c6bd89df4f98145adb93ef1ea3a30e, type: 3}
+  m_Name: SpellDetails_LightningBolt
+  m_EditorClassIdentifier: 
+  spellName: Lightning Bolt
+  spellDescription: Strike a lightning bolt to the enemy
+  image: {fileID: 21300000, guid: 4cee2062b5f2b2a4ba019442a5217a23, type: 3}
+  target: 1
+  spellCooldown: 10
+  manaCost: 50
+  spellUpgradeList:
+  - isGoldUpgrade: 0
+    isGemUpgrade: 1
+    cost: 8
+    attributeList:
+    - name: Damage
+      value: 200
+      displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+      icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  - isGoldUpgrade: 1
+    isGemUpgrade: 0
+    cost: 2000
+    attributeList:
+    - name: Damage
+      value: 300
+      displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+      icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  - isGoldUpgrade: 1
+    isGemUpgrade: 0
+    cost: 5000
+    attributeList:
+    - name: Damage
+      value: 400
+      displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+      icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  - isGoldUpgrade: 1
+    isGemUpgrade: 0
+    cost: 10000
+    attributeList:
+    - name: Damage
+      value: 500
+      displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+      icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  - isGoldUpgrade: 1
+    isGemUpgrade: 0
+    cost: 20000
+    attributeList:
+    - name: Damage
+      value: 600
+      displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+      icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  spellPrefab: {fileID: 3223598841702353486, guid: c0455e9e9cc86ed4eb0ecd987642095f, type: 3}

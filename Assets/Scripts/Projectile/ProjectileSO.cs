@@ -25,10 +25,15 @@ public class ProjectileSO : ScriptableObject
     public float speed = 50f;
 
     #region Tooltip
+    [Tooltip("The projectile's hitbox")]
+    #endregion
+    public Vector2 size = new(1, 0.5f);
+
+    #region Tooltip
     [Tooltip("Splash radius of projectile when hit the enemy. Applied only if the projectile type is single target")]
     #endregion
     #region Range
-    [Range(1, 1000f)]
+    [Range(0, 1000f)]
     #endregion
     public float splashRadius = 0;
 

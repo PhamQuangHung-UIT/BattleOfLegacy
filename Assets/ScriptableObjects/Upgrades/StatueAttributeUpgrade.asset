@@ -12,73 +12,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9bf718b151be54e9b4960ccf74a7f5, type: 3}
   m_Name: StatueAttributeUpgrade
   m_EditorClassIdentifier: 
-  statueHealthIcon: {fileID: 0}
+  statueHealthTitle: Gold Rate Increase
+  statueHealthIcon: {fileID: 21300000, guid: d5abe6941c64c6443ad04c48843ca3f8, type: 3}
   statueHealthPerLevelDetails:
   - amount: 250
-    upgradeCost: 250
+    isGemUpgrade: 0
+    upgradeCost: 0
   - amount: 400
+    isGemUpgrade: 0
     upgradeCost: 500
   - amount: 600
+    isGemUpgrade: 0
     upgradeCost: 1000
-  - amount: 800
+  - amount: 750
+    isGemUpgrade: 0
     upgradeCost: 2500
-  - amount: 1100
+  - amount: 1050
+    isGemUpgrade: 0
     upgradeCost: 5000
   - amount: 1400
+    isGemUpgrade: 0
     upgradeCost: 10000
-  - amount: 1900
+  - amount: 1800
+    isGemUpgrade: 0
     upgradeCost: 25000
-  - amount: 2400
+  - amount: 2250
+    isGemUpgrade: 0
     upgradeCost: 50000
-  - amount: 3000
+  - amount: 2750
+    isGemUpgrade: 0
     upgradeCost: 100000
-  - amount: 3600
+  - amount: 3300
+    isGemUpgrade: 0
     upgradeCost: 250000
-  maxManaIcon: {fileID: 0}
+  statueHealthDescription: Increase statue max health
+  maxManaTitle: Max Mana Increase
+  maxManaIcon: {fileID: 21300000, guid: 348ab73c76a963143ab4dcb68bfbe958, type: 3}
   maxManaPerLevelDetails:
   - amount: 150
+    isGemUpgrade: 0
     upgradeCost: 500
   - amount: 250
+    isGemUpgrade: 0
     upgradeCost: 1000
   - amount: 500
+    isGemUpgrade: 0
     upgradeCost: 2500
   - amount: 750
+    isGemUpgrade: 0
     upgradeCost: 5000
   - amount: 1000
+    isGemUpgrade: 0
     upgradeCost: 10000
   - amount: 1500
+    isGemUpgrade: 0
     upgradeCost: 25000
   - amount: 2500
+    isGemUpgrade: 0
     upgradeCost: 50000
   - amount: 4000
+    isGemUpgrade: 0
     upgradeCost: 100000
-  manaPerSecondIcon: {fileID: 0}
-  manaPerSecondPerLevelDetails:
-  - amount: 5
-    upgradeCost: 500
-  - amount: 7.5
+  maxManaDescription: Increase maximum mana can be held
+  manaRecoverSpeedTitle: Mana Recover Speed Increase
+  manaRecoverSpeedIcon: {fileID: 21300000, guid: 86e440873b89fa44a823b6a7d0515d15, type: 3}
+  manaRecoverSpeedPerLevelDetails:
+  - amount: 3
+    isGemUpgrade: 0
+    upgradeCost: 0
+  - amount: 6
+    isGemUpgrade: 0
     upgradeCost: 1000
-  - amount: 10
-    upgradeCost: 2500
-  - amount: 15
+  - amount: 9
+    isGemUpgrade: 0
+    upgradeCost: 3000
+  - amount: 12
+    isGemUpgrade: 0
     upgradeCost: 5000
-  - amount: 20
+  - amount: 15
+    isGemUpgrade: 0
     upgradeCost: 10000
-  - amount: 30
-    upgradeCost: 25000
-  - amount: 40
+  - amount: 20
+    isGemUpgrade: 0
     upgradeCost: 50000
-  - amount: 60
+  - amount: 30
+    isGemUpgrade: 0
     upgradeCost: 100000
-  goldGainRateIcon: {fileID: 0}
+  manaRecoverSpeedDescription: Increase mana recovering speed
+  goldGainRateTitle: Gold Rate Increase
+  goldGainRateIcon: {fileID: 21300000, guid: 9f5a9ae761b2f214ca8c9678c389bc0d, type: 3}
   goldGainRatePerLevelDetails:
   - amount: 15
+    isGemUpgrade: 0
     upgradeCost: 1000
   - amount: 30
+    isGemUpgrade: 0
     upgradeCost: 2500
   - amount: 45
+    isGemUpgrade: 0
     upgradeCost: 5000
   - amount: 60
+    isGemUpgrade: 0
     upgradeCost: 10000
   - amount: 75
+    isGemUpgrade: 0
     upgradeCost: 25000
+  goldGainRateDescription: Increase the gold receving from the enemy
+  maxSpellSlotTitle: Maximum Spell Slot Increase
+  maxSpellSlotIcon: {fileID: 21300000, guid: 76b839023dbb25d4cbf324ccfabf4ab4, type: 3}
+  maxSpellSlotPerLevelDetails:
+  - amount: 1
+    isGemUpgrade: 0
+    upgradeCost: 0
+  - amount: 2
+    isGemUpgrade: 0
+    upgradeCost: 1000
+  - amount: 3
+    isGemUpgrade: 0
+    upgradeCost: 5000
+  - amount: 4
+    isGemUpgrade: 0
+    upgradeCost: 25000
+  - amount: 5
+    isGemUpgrade: 0
+    upgradeCost: 50000
+  maxSpellSlotDescription: Increase the maximum spell slot a player can hold

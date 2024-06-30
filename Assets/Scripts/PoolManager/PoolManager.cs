@@ -12,7 +12,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
     private Transform objectPoolTransform;
     private readonly Dictionary<string, Queue<Component>> poolDictionary = new();
     private readonly Dictionary<string, GameObject> prefabDictionary = new();
-    private readonly Dictionary<string, GameObject> anchorDictionary = new();
+    public readonly Dictionary<string, GameObject> anchorDictionary = new();
 
     [System.Serializable]
     public struct Pool
@@ -22,8 +22,9 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
         public int poolSize;
     }
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         // This singleton gameobject will be the object pool parent
         objectPoolTransform = gameObject.transform;
 
@@ -72,7 +73,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
     /// </summary>
     public T ReuseComponent<T>(Vector3 position, Quaternion rotation) where T : Component
     {
-        string componentType = nameof(T);
+        string componentType = typeof(T).Name;
         if (poolDictionary.ContainsKey(componentType))
         {
             // Get object from pool queue

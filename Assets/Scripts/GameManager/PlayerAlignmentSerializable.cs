@@ -4,21 +4,26 @@ using System.Linq;
 
 public class PlayerAlignmentSerializable : ISerializable
 {
-    public List<UnitBaseStatsSO> unitAlignment;
+    public List<UnitBaseStatsSO> unitAlignment = GameManager.Instance.settings.beginUnitAlignment.ToList();
 
-    public List<SpellBase> spellAlignment;
+    public List<SpellBase> spellAlignment = GameManager.Instance.settings.beginSpellAlignment.ToList();
 
     public void LoadData(Stream stream)
     {
         using var reader = new BinaryReader(stream);
         int count = reader.ReadInt32();
+
+        unitAlignment.Clear();
         for (int i = 0; i < count; i++)
         {
             string name = reader.ReadString();
             var unit = GameManager.Instance.settings.allObtainableUnit.First(u => u.unitName == name);
             unitAlignment.Add(unit);
         }
+
         count = reader.ReadInt32();
+
+        spellAlignment.Clear();
         for (int i = 0; i < count; i++)
         {
             string name = reader.ReadString();

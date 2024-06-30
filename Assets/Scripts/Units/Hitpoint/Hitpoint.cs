@@ -17,7 +17,7 @@ class Hitpoint : MonoBehaviour
     private UnitEvent unitEvent;
     private HitpointEvent hitpointEvent;
 
-    private void Start()
+    private void Awake()
     {
         unit = GetComponent<Unit>();
         unitEvent = GetComponent<UnitEvent>();
@@ -42,33 +42,37 @@ class Hitpoint : MonoBehaviour
 
     private void HitpointEvent_OnHitpointChange(HitpointArgs args)
     {
+        bool isHurt = false;
         float hitpointValue = ApplyHitpointEffect(args.value);
         if (currentShield == 0 || currentShield > 0 && hitpointValue > 0)
         {
-            RandomizeHurtState(hitpointValue);
+            isHurt = RandomizeHurtState(hitpointValue);
             unit.currentHealth = Mathf.Clamp(unit.currentHealth + hitpointValue, 0, unit.maxHealth);
         } else // Damage
         {
             lastDamageTaken += hitpointValue;
             unit.currentHealth += hitpointValue;
         }
+        healthBar.SetValue(unit.currentHealth / unit.maxHealth);
 
         if (unit.currentHealth <= 0)
         {
             unitEvent.CallOnDead();
+            unit.isDead = true;
             healthBar.gameObject.SetActive(false);
         } else
         {
+            if (isHurt)
+                unitEvent.CallOnHurt();
             healthBar.gameObject.SetActive(true);
         }
     }
 
-    private void RandomizeHurtState(float hitpointValue)
+    private bool RandomizeHurtState(float hitpointValue)
     {
         float rand = Random.Range(0f, 1f);
         float max = hitpointValue / unit.maxHealth * 1.5f;
-        if (max > rand)
-            unitEvent.CallOnHurt();
+        return max > rand;
     }
 
     private void HitpointEvent_OnShieldAdded(HitpointArgs args)

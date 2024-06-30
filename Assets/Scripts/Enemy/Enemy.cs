@@ -28,6 +28,12 @@ public class Enemy : MonoBehaviour
 
     private void UnitEvent_OnDeath(EventArgs args)
     {
+        Level.Instance.currentMana += enemyDetails.manaAward;
+        if (Level.Instance.currentMana > Level.Instance.maxMana)
+        {
+            Level.Instance.currentMana = Level.Instance.maxMana;
+        }
+        Level.Instance.goldGained += Mathf.RoundToInt(enemyDetails.goldAwarded * Level.Instance.goldGainedRate);
         GoldDrop goldDrop = PoolManager.Instance.ReuseComponent<GoldDrop>(transform.position, transform.rotation);
         goldDrop.amount = enemyDetails.goldAwarded;
         goldDrop.gameObject.SetActive(true);

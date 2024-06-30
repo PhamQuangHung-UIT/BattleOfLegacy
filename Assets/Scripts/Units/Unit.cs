@@ -15,6 +15,7 @@ public class Unit : MonoBehaviour
     public UnitBaseStatsSO unitDetails;
     public int currentUnitLevel;
     public bool isEnemy;
+    public bool isDead;
     [HideInInspector] public float maxHealth;
     [HideInInspector] public float baseDamage;
     [HideInInspector] public float currentHealth;
@@ -23,15 +24,13 @@ public class Unit : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public List<EffectSO> effectList = new();
 
-    UnitEvent unitEvent;
     HitpointEvent hitpointEvent;
-    Animator anim;
-
-    private UnitBaseState unitState;
+    SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        unitEvent = GetComponent<UnitEvent>();
+        hitpointEvent = GetComponent<HitpointEvent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void Initialized(UnitBaseStatsSO stats, int unitLevel, bool isEnemy)
@@ -45,8 +44,14 @@ public class Unit : MonoBehaviour
         currentAttackSpeed = stats.attackSpeed;
         currentMovementSpeed = stats.movementSpeed;
         currentUnitLevel = unitLevel;
+        isDead = false;
+    }
 
+    private void OnEnable()
+    {
         InitializeHealth();
+        gameObject.layer = isEnemy ? LayerMask.NameToLayer("Enemy") : 1;
+        spriteRenderer.flipX = isEnemy;
     }
 
     private void OnDisable()

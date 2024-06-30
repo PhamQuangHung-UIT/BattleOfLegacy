@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 8012043316520003697}
   - component: {fileID: 8591156556685065352}
   - component: {fileID: 4526134993772567616}
-  - component: {fileID: 7285768313434030330}
   - component: {fileID: 5771543962717935544}
   - component: {fileID: 3728971322229554868}
   - component: {fileID: 771483796615118101}
@@ -27,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6440171162123301681
 Transform:
   m_ObjectHideFlags: 0
@@ -86,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1024407609, guid: 12102a5548f2ffe47b89a0ab1d03f7dd, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +93,7 @@ SpriteRenderer:
   m_Size: {x: 4.125, y: 2.6875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &5856387727921114110
@@ -133,6 +132,7 @@ MonoBehaviour:
   unitDetails: {fileID: 11400000, guid: 7ad07788ff70e914c81ba4c1a446b4cb, type: 2}
   currentUnitLevel: 0
   isEnemy: 0
+  isDead: 0
   maxHealth: 0
   baseDamage: 0
   currentHealth: 0
@@ -196,7 +196,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13308206, y: 0.2032929}
+  m_Offset: {x: 0, y: 2}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -207,7 +207,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5958745, y: 0.4065858}
+  m_Size: {x: 2, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &8591156556685065352
 MonoBehaviour:
@@ -234,19 +234,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c195d20ab7b24384b917afd8cd66982b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7285768313434030330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2468596541809627440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6171df1ff67285d4f94c3401f5872dc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  values: 
 --- !u!114 &5771543962717935544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,7 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDetails: {fileID: 0}
-  goldDropPrefab: {fileID: 6517931778892844734, guid: b0107977bf913fd4eb2f3d2ceebd10d6, type: 3}
 --- !u!1 &2555825659518467808
 GameObject:
   m_ObjectHideFlags: 0

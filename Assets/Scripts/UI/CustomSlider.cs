@@ -19,9 +19,9 @@ public class CustomSlider : MonoBehaviour
 
     public void SetValue(float value)
     {
-        currentIndex = (int)(value * 10) - 1;
+        currentIndex = (int)(value * 10);
         EnableSliderItemAtCurrentIndex();
-        onValueChange?.Invoke((currentIndex + 1) / 10f);
+        onValueChange?.Invoke(currentIndex / 10f);
     }
 
     private void Awake()
@@ -37,17 +37,15 @@ public class CustomSlider : MonoBehaviour
 
     void Update()
     {
-        // Check if the mouse position is inside the rect
-        Vector2 localMousePos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localMousePos);
-
-        if (rectTransform.rect.Contains(localMousePos))
+        if (InputUtility.TryGetInputPosition(out var inputPosition))
         {
-            if (Input.GetMouseButton(0))
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, inputPosition, null, out var localInputPos);
+
+            if (rectTransform.rect.Contains(localInputPos))
             {
-                currentIndex = Mathf.Clamp(Mathf.FloorToInt(localMousePos.x / widthPerElement) + Mathf.CeilToInt(elementCount / 2f), 0, 9);
+                currentIndex = Mathf.Clamp(Mathf.FloorToInt(localInputPos.x / widthPerElement) + Mathf.CeilToInt(elementCount / 2f), 0, 10);
                 EnableSliderItemAtCurrentIndex();
-                onValueChange?.Invoke((currentIndex + 1) / 10f);
+                onValueChange?.Invoke(currentIndex / 10f);
             }
         }
     }

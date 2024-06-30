@@ -30,6 +30,13 @@ public static class StaticEventHandler
     {
         OnReceiveGold?.Invoke(new() { amount = amount });
     }
+
+    public static event Action<OnVolumeChangeArgs> OnSFXVolumeChange;
+
+    public static void CallOnSFXVolumeChange(float oldVolume, float newVolume)
+    {
+        OnSFXVolumeChange?.Invoke(new() { oldVolume = oldVolume, newVolume = newVolume });
+    }
 }
 
 public class CastSpellArgs: EventArgs
@@ -40,4 +47,10 @@ public class CastSpellArgs: EventArgs
 public class OnReceiveGoldEventArgs : EventArgs
 {
     public int amount;
+}
+
+public class OnVolumeChangeArgs : EventArgs
+{
+    public float oldVolume;
+    public float newVolume;
 }

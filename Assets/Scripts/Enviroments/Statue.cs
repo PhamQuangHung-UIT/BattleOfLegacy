@@ -5,11 +5,24 @@
 [DisallowMultipleComponent]
 public class Statue : MonoBehaviour
 {
+    public Sprite destroyStatueSprite;
+    public GameObject smokeEffect, panelToShow;
     [HideInInspector] public float maxHealth;
-    float currentHealth;
+    [HideInInspector] public float currentHealth;
     HitpointEvent hitpointEvent;
+    SpriteRenderer spriteRenderer;
+    HealthBarUI healthBarUI;
+    bool isEnemyStatue;
 
     private void Awake()
+    {
+        hitpointEvent = GetComponent<HitpointEvent>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        healthBarUI = GetComponentInChildren<HealthBarUI>();
+        healthBarUI.Initialized(isEnemyStatue);
+    }
+
+    private void Start()
     {
         if ((gameObject.layer & LayerMask.NameToLayer("Enemy")) != 0)
         {
@@ -17,11 +30,10 @@ public class Statue : MonoBehaviour
         }
         else
         {
-            int maxHealthLevel = UpgradeManager.Instance.data.statueAttributeLevels["maxHealth"];
+            int maxHealthLevel = UpgradeManager.Instance.data.statueAttributeLevels["statueHealth"];
             maxHealth = UpgradeManager.Instance.statueUpgradeDetails.statueHealthPerLevelDetails[maxHealthLevel].amount;
         }
         currentHealth = maxHealth;
-        hitpointEvent = GetComponent<HitpointEvent>();
     }
 
     private void OnEnable()
@@ -36,10 +48,13 @@ public class Statue : MonoBehaviour
 
     private void HitpointEvent_OnHitpointChange(HitpointArgs args)
     {
-        currentHealth -= args.value;
+        currentHealth += args.value;
+        healthBarUI.SetValue(currentHealth / maxHealth);
         if (currentHealth < 0)
         {
-            if ((gameObject.layer & LayerMask.NameToLayer("Enemy")) != 0)
+            spriteRenderer.sprite = destroyStatueSprite;
+            smokeEffect.SetActive(true);
+            if (isEnemyStatue)
             {
                 StaticEventHandler.CallOnVictory();
             }
@@ -47,6 +62,13 @@ public class Statue : MonoBehaviour
             {
                 StaticEventHandler.CallOnDefeat();
             }
+            healthBarUI.gameObject.SetActive(false);
+            Invoke(nameof(ShowPanel), 3);
         }
+    }
+
+    private void ShowPanel()
+    {
+        panelToShow.SetActive(true);
     }
 }

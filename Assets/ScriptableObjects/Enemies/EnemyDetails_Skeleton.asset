@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: EnemyDetails_Skeleton
   m_EditorClassIdentifier: 
   goldAwarded: 1
+  manaAward: 10
   level: 1
   unitDetails: {fileID: 11400000, guid: 8d6a577e6b36d5d4680216012a3e19a9, type: 2}

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitDetails_", menuName = "Scriptable Objects/Unit/UnitBaseStats")]
@@ -50,6 +51,11 @@ public class UnitBaseStatsSO : ScriptableObject
     [Range(0.1f, 10f)]
     #endregion
     public float attackSpeed = 1.0f;
+
+    #region Tooltip
+    [Tooltip("Attack sound effect")]
+    #endregion
+    public SoundEffectSO attackSFX;
 
     #region Tooltip
     [Tooltip("The number of strike to the target for each attack")]
@@ -118,7 +124,7 @@ public class UnitBaseStatsSO : ScriptableObject
     #region Tooltip
     [Tooltip("Animation controller of the unit")]
     #endregion
-    public AnimatorOverrideController animationController;
+    public AnimatorController animationController;
 
     #region Header
     [Header("Upgrades")]
@@ -127,4 +133,18 @@ public class UnitBaseStatsSO : ScriptableObject
     [Tooltip("List of unit stats")]
     #endregion
     public UnitUpgradeDetails[] upgradeDetails;
+    #region UNITY EDITOR
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (upgradeDetails != null)
+        {
+            foreach (var upgrade in upgradeDetails)
+            {
+                ValidateUtilities.Assert(upgrade.isGoldUpgrade ^ upgrade.isGemUpgrade);
+            }
+        }
+    }
+#endif
+    #endregion
 }

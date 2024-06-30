@@ -55,3 +55,8 @@ public enum Theme
     DeadForest,
     DarkCave
 }
+
+public enum GridViewType
+{
+    Unit, Spell, Other
+} 

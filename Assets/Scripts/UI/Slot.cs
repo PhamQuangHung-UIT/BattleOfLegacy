@@ -7,36 +7,30 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-    public bool canUsed = true;
-    float timeInterval = 1;
-    float cost;
+    float cooldownDuration = 1;
+    int cost;
     Button currentBtn;
-    [SerializeField] Image slotImage, cooldownImage, icon;
+    [SerializeField] Image cover, cooldownImage, icon;
     [SerializeField] TextMeshProUGUI costText;
 
     private void Awake()
     {
         currentBtn = GetComponent<Button>();
-    }
-
-    private void Start()
-    {
-        if (!canUsed)
-        {
-            foreach (Transform child in transform)
-            {
-                child.gameObject.SetActive(false);
-            }
-        }
+        currentBtn.onClick.AddListener(OnPress);
     }
 
     private void Update()
     {
-        if (Level.Instance.currentMana > cost)
+        if (Level.Instance.currentMana < cost)
         {
-            slotImage.color = new(0, 0, 0, 0.7f);
+            cover.color = GameManager.Instance.settings.disableColorForCover;
+            currentBtn.enabled = false;
         }
-        else slotImage.color = new(0, 0, 0, 0f);
+        else
+        {
+            currentBtn.enabled = true;
+            cover.color = new(0, 0, 0, 0f);
+        }
     }
 
     public void OnPress()
@@ -49,11 +43,11 @@ public class Slot : MonoBehaviour
     {
         float currentTime = 0;
         cooldownImage.fillAmount = 1;
-        while (currentTime < timeInterval)
+        while (currentTime < cooldownDuration)
         {
             yield return null;
             currentTime += Time.deltaTime;
-            cooldownImage.fillAmount = 1 - currentTime / timeInterval;
+            cooldownImage.fillAmount = 1 - currentTime / cooldownDuration;
         }
         cooldownImage.fillAmount = 0;
         currentBtn.enabled = true;
@@ -64,8 +58,14 @@ public class Slot : MonoBehaviour
         icon.sprite = iconImage;
     }
 
+    public void SetCooldownDuration(float duration)
+    {
+        cooldownDuration = duration;
+    }
+
     public void SetCost(int newCost)
     {
+        cost = newCost;
         if (newCost > 1000000)
         {
             costText.text = newCost / 1000000 + "M";
@@ -75,5 +75,13 @@ public class Slot : MonoBehaviour
             costText.text = newCost / 1000 + "K";
         }
         else costText.text = newCost.ToString();
+    }
+
+    public void RemoveSlot()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 }

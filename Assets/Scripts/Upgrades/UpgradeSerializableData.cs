@@ -1,11 +1,33 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 public class UpgradeSerializableData : ISerializable
 {
     public Dictionary<string, int> unitLevels = new();
 
-    public Dictionary<string, int> statueAttributeLevels = new();
+    public Dictionary<string, int> spellLevels = new();
+
+    public Dictionary<string, int> statueAttributeLevels;
+
+    public UpgradeSerializableData()
+    {
+        statueAttributeLevels = new();
+        foreach (var unitDetail in GameManager.Instance.settings.beginUnitAlignment)
+        {
+            unitLevels.Add(unitDetail.unitName, 0);
+        }
+
+        foreach (var spell in GameManager.Instance.settings.beginSpellAlignment)
+        {
+            spellLevels.Add(spell.spellDetails.spellName, 0);
+        }
+
+        foreach (var key in UpgradeManager.Instance.statueUpgradeDetails.attributeList.Keys)
+        {
+            statueAttributeLevels.Add(key, 0);
+        }
+    }
 
     public void LoadData(Stream stream)
     {
@@ -22,6 +44,14 @@ public class UpgradeSerializableData : ISerializable
         {
             string attributeName = reader.ReadString();
             int level = reader.ReadInt32();
+            spellLevels.Add(attributeName, level);
+        }
+        count = reader.ReadInt32();
+        statueAttributeLevels.Clear();
+        for (int i = 0; i < count; i++)
+        {
+            string attributeName = reader.ReadString();
+            int level = reader.ReadInt32();
             statueAttributeLevels.Add(attributeName, level);
         }
     }
@@ -34,6 +64,12 @@ public class UpgradeSerializableData : ISerializable
         {
             writer.Write(unit.Key); 
             writer.Write(unit.Value);
+        }
+        writer.Write(spellLevels.Count);
+        foreach (var spell in spellLevels)
+        {
+            writer.Write(spell.Key);
+            writer.Write(spell.Value);
         }
         writer.Write(statueAttributeLevels.Count);
         foreach (var attribute in statueAttributeLevels)

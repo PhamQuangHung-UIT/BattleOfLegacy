@@ -14,9 +14,10 @@ public class UnitSlotPanel : SlotPanel
             if (i < units.Count)
             {
                 slot.SetIcon(units[i].image);
+                slot.SetCooldownDuration(units[i].cooldownInterval);
                 slot.SetCost((int)units[i].manaCost);
             }
-            else slot.canUsed = false;
+            else slot.RemoveSlot();
         }
     }
 

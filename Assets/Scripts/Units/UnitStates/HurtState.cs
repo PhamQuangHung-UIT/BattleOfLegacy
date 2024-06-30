@@ -14,12 +14,16 @@ public class HurtState : UnitBaseState
     {
         time += Time.deltaTime;
         if (time > 0.5f)
+        {
             nextState = ai.GetState(UnitState.Idle);
+            currentStateEvent = StateEvent.Exit;
+        }
         base.Update();
     }
 
     public override void Exit()
     {
-        animEvent.CallOnStopUnitAnim(UnitState.Hurt);
+        base.Exit();
+        //animEvent.CallOnStopUnitAnim(UnitState.Hurt);
     }
 }

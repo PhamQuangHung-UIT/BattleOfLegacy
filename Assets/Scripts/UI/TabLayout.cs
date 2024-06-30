@@ -5,23 +5,39 @@ using UnityEngine.UI;
 
 public class TabLayout : MonoBehaviour
 {
-    [SerializeField] GameObject[] tabButtons;
-
-    public void SetOnTop(GameObject ui)
+    [System.Serializable]
+    public class Tab
     {
-        ui.transform.SetAsLastSibling();
-        GameObject tabButton = ui.transform.Find("Tab").gameObject;
-        foreach (var button in tabButtons)
+        public Button tabButton;
+        public GameObject content;
+    }
+
+    [SerializeField] Tab[] tabButtons;
+
+    private void Start()
+    {
+        foreach (Tab tab in tabButtons)
         {
-            if (button != tabButton)
+            tab.tabButton.onClick.AddListener(() => SetOnTop(tab));
+        }
+        tabButtons[0].tabButton.onClick.Invoke();
+    }
+
+    public void SetOnTop(Tab currentTab)
+    {
+        currentTab.content.transform.SetAsLastSibling();
+        currentTab.tabButton.transform.SetAsLastSibling();
+        foreach (var tab in tabButtons)
+        {
+            if (tab != currentTab)
             {
-                button.GetComponent<Image>().color = GameConsts.disableColor;
-                button.GetComponentInChildren<Image>().color = GameConsts.disableColor;
+                tab.tabButton.GetComponent<Image>().color = GameManager.Instance.settings.disableColor;
+                tab.tabButton.transform.GetChild(0).GetComponent<Image>().color = GameManager.Instance.settings.disableColor;
             }
             else
             {
-                button.GetComponent<Image>().color = Color.white;
-                button.GetComponentInChildren<Image>().color = Color.white;
+                tab.tabButton.GetComponent<Image>().color = Color.white;
+                tab.tabButton.transform.GetChild(0).GetComponent<Image>().color = Color.white;
             }
         }
     }

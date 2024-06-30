@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d18ac57f9a9dc48b58d5471c3d8103, type: 3}
+  m_Name: UnitDetails_SkeletonArcher
+  m_EditorClassIdentifier: 
+  image: {fileID: 0}
+  unitName: Skeleton Archer
+  unitDescription: 
+  isRangeUnit: 1
+  attackProjectile: {fileID: 11400000, guid: 9f3b990c2d596af4bbb96d9145523906, type: 2}
+  manaCost: 30
+  cooldownInterval: 0
+  attackSpeed: 0.7
+  attackSFX: {fileID: 11400000, guid: aa2456bb6bc381f4f9db79890d367f36, type: 2}
+  strikesPerAttack: 1
+  attackAnimationDelay: 0.7
+  critStrikeChance: 0
+  critStrikeDamage: 0
+  attackRange: 15
+  movementSpeed: 3
+  animationController: {fileID: 9100000, guid: 654f7b72f2de7b049a5556823abb6840, type: 2}
+  upgradeDetails:
+  - cost: 0
+    unitMaxHealth: 200
+    unitDamage: 40
+    isGoldUpgrade: 1
+    isGemUpgrade: 0
+    unlockFirstSkill: 0
+    unlockSecondSkill: 0

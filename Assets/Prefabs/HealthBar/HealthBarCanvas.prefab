@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6559372130100477625}
   - component: {fileID: 3531035601502956459}
+  - component: {fileID: 8977036526063464521}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -46,6 +47,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199283101546790197}
   m_CullTransparentMesh: 1
+--- !u!114 &8977036526063464521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199283101546790197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9bd0c068e16234a85540f580892c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0
+  originWidth: 0
 --- !u!1 &3637475140656304047
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.15854979, g: 1, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

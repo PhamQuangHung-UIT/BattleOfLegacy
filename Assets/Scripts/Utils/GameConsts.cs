@@ -19,6 +19,11 @@ public static class GameConsts
     /// </summary>
     public const int maxUnitLevel = 10;
 
+    /// <summary>
+    /// Max level a spell can be upgraded
+    /// </summary>
+    public const int maxSpellLevel = 10;
+
     public const float parallaxMaxPoint = 10;
 
     /// <summary>
@@ -34,5 +39,5 @@ public static class GameConsts
     public static readonly Color playerHealthbarColor = Color.green;
 
     public static readonly Color enemyHealthbarColor = Color.red;
-    public static readonly Color disableColor = new(0.3f, 0.3f, 0.3f);
+    public static Color transparent = new();
 }

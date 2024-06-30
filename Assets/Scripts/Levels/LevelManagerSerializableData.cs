@@ -2,8 +2,8 @@
 
 public class LevelManagerSerializableData : ISerializable
 {
-    public int selectedLevel = 1;
-    public int currentLevel = 1;
+    public int selectedLevel;
+    public int currentLevel;
     public void LoadData(Stream stream)
     {
         using BinaryReader br = new(stream);

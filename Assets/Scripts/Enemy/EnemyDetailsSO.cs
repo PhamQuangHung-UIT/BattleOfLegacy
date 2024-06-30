@@ -14,6 +14,11 @@ public class EnemyDetailsSO : ScriptableObject
     public int goldAwarded;
 
     #region Tooltip
+    [Tooltip("Mana receive when the enemy is dead")]
+    #endregion
+    public int manaAward;
+
+    #region Tooltip
     [Tooltip("Level of the enemy")]
     #endregion
     public int level;
@@ -22,4 +27,11 @@ public class EnemyDetailsSO : ScriptableObject
     [Tooltip("Details of the enemy unit")]
     #endregion
     public UnitBaseStatsSO unitDetails;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        ValidateUtilities.Assert(level > 1);
+    }
+#endif
 }

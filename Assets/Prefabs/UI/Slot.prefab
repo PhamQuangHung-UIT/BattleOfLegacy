@@ -186,8 +186,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -2, y: 12}
-  m_SizeDelta: {x: 50, y: 16}
+  m_AnchoredPosition: {x: -5, y: 12}
+  m_SizeDelta: {x: 60, y: 20}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4366927685438648130
 CanvasRenderer:
@@ -259,10 +259,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7752084436310787315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5468394817149138666
 CanvasRenderer:
@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 5609565333208050855}
   - component: {fileID: 2626166176680674783}
   - component: {fileID: 5080217471613714876}
+  - component: {fileID: 2327039710379214631}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -329,7 +330,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4173401561467852206}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -343,7 +344,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -294.00003, y: 33.000004}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: 72, y: 72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1806922780461820763
 CanvasRenderer:
@@ -439,10 +440,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195aa770d2fbc83459dd5ffa54740f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotImage: {fileID: 5910115076527985784}
+  cover: {fileID: 5910115076527985784}
   cooldownImage: {fileID: 8329422753400079606}
   icon: {fileID: 2267613320759207766}
-  cost: {fileID: 8901753458164888566}
+  costText: {fileID: 8901753458164888566}
+--- !u!114 &2327039710379214631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4173401561467852206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: 1
+  m_FlexibleHeight: 1
+  m_LayoutPriority: 1
 --- !u!1 &4276817317932101414
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,10 +496,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1977905759772874125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -5, y: 0}
+  m_SizeDelta: {x: 100, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &5923637271089828873
 CanvasRenderer:
@@ -508,7 +529,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: '50
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3cdcf67a5d40de4ca1cf62517cea8b8, type: 2}
   m_sharedMaterial: {fileID: 8541418552701877427, guid: c3cdcf67a5d40de4ca1cf62517cea8b8, type: 2}
@@ -535,8 +558,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -609,10 +632,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7752084436310787315}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 64, y: 64}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8726997461010524593
 CanvasRenderer:

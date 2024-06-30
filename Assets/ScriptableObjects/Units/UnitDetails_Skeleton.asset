@@ -13,15 +13,26 @@ MonoBehaviour:
   m_Name: UnitDetails_Skeleton
   m_EditorClassIdentifier: 
   image: {fileID: 0}
-  unitName: 
+  unitName: Skeleton Warrior
+  unitDescription: 
   isRangeUnit: 0
   attackProjectile: {fileID: 0}
-  manaCost: 0
+  manaCost: 20
   cooldownInterval: 0
   attackSpeed: 1
-  attackAnimationDelay: 1
-  critStrikeChance: 1
+  attackSFX: {fileID: 11400000, guid: e6861c0848837a64c844beb990dffcae, type: 2}
+  strikesPerAttack: 1
+  attackAnimationDelay: 0.75
+  critStrikeChance: 0
   critStrikeDamage: 0
-  attackRange: 0
-  movementSpeed: 0
-  animationController: {fileID: 22100000, guid: a1f01c15f8a41f442a40564dd368efff, type: 2}
+  attackRange: 1
+  movementSpeed: 4.5
+  animationController: {fileID: 9100000, guid: 4dba2a4021db28541b114fb1a67c0875, type: 2}
+  upgradeDetails:
+  - cost: 0
+    unitMaxHealth: 300
+    unitDamage: 30
+    isGoldUpgrade: 0
+    isGemUpgrade: 1
+    unlockFirstSkill: 0
+    unlockSecondSkill: 0

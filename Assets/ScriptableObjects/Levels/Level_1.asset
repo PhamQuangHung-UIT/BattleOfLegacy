@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   id: 1
-  firstTimeRewardedGold: 500
-  replayRewardedGold: 50
+  firstTimeRewardedGold: 1000
+  replayRewardedGold: 200
   rewardedGems: 1
   currentLevelTheme: {fileID: 11400000, guid: d68677607e2ec2d4a93dd94de3d9ea74, type: 2}
   enemySpawnConsistent: 1
   enemySpawnableList:
-  - {fileID: 0}
-  enemyStatueMaxHealth: 200
-  enemyMaxMana: 150
+  - {fileID: 11400000, guid: aa8e3421ff6172b44b1cf85cc2db468d, type: 2}
+  enemyStatueMaxHealth: 500
+  enemyMaxMana: 200
   enemyManaPerSecond: 10

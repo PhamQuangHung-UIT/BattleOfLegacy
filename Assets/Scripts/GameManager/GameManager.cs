@@ -12,12 +12,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+        playerData = new();
         StorageUtils.Load(playerData, playerFileName);
+    }
+
+    public void SaveData()
+    {
+        StorageUtils.Save(playerData, playerFileName);
     }
 
     public void GoToSelectLevel()
     {
-        SceneManager.LoadScene("Select Level", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Select Level", LoadSceneMode.Single);
     }
 
     public void GoToMainMenu()
@@ -30,8 +36,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         SceneManager.LoadScene("Level", LoadSceneMode.Single);
     }
 
-    public void GoToShop()
+    public void GoToUpgrade()
     {
-        SceneManager.LoadScene("Upgrade", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Upgrade", LoadSceneMode.Single);
+    }
+
+    public void GoToBuildScene()
+    {
+        SceneManager.LoadScene("Build", LoadSceneMode.Single);
     }
 }

@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-[SerializeField]
+﻿[System.Serializable]
 public struct UnitUpgradeDetails
 {
     public int cost;

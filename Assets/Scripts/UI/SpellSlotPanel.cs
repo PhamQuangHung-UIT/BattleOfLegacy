@@ -13,14 +13,16 @@ public class SpellSlotPanel : SlotPanel
             if (i < spells.Count)
             {
                 slot.SetIcon(spells[i].spellDetails.image);
+                slot.SetCooldownDuration(spells[i].spellDetails.spellCooldown);
                 slot.SetCost((int)spells[i].spellDetails.manaCost);
-            } else slot.canUsed = false;
+            } else slot.RemoveSlot();
         }
     }
 
     protected override void OnPress(int i)
     {
         Level.Instance.currentMana -= spells[i].spellDetails.manaCost;
-        spells[i].Execute();
+        SpellBase spell = Instantiate(spells[i]);
+        Level.Instance.ExecuteSpell(spell);
     }
 }

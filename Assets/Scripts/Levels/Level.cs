@@ -8,7 +8,7 @@ public class Level : SingletonMonoBehaviour<Level>
     public Vector2 playerSpawnPos, enemySpawnPos;
 
     [Header("User Interface")]
-    public TextMeshProUGUI maxManaText, currentManaText, manaPerSecondText, goldGainedText;
+    public TextMeshProUGUI currentManaText, manaPerSecondText, goldGainedText;
 
     [HideInInspector] public LevelDetailsSO levelDetails;
 
@@ -17,6 +17,9 @@ public class Level : SingletonMonoBehaviour<Level>
 
     [Header("Enviroment")]
     public GameObject playerStatue, enemyStatue;
+    [Header("UI")]
+    public VictoryPanel victoryPanel;
+    public DefeatPanel defeatPanel;
 
     [HideInInspector] public int goldGained = 0;
 
@@ -34,11 +37,25 @@ public class Level : SingletonMonoBehaviour<Level>
         StaticEventHandler.OnVictory += OnVictory;
         StaticEventHandler.OnDefeat += OnDefeat;
         GetLevelDetail();
+        manaPerSecondText.text = manaPerSecond + " mana/s";
     }
-
+ 
     private void Update()
     {
-        
+        currentMana += manaPerSecond * Time.deltaTime;
+        if (currentMana > maxMana)
+        {
+            currentMana = maxMana;
+        }
+        currentManaText.text = (int)currentMana + "/" + (int)maxMana;
+        goldGainedText.text = goldGained.ToString();
+    }
+
+    private void OnDisable()
+    {
+        StaticEventHandler.OnReceiveGold -= OnReceiveGold;
+        StaticEventHandler.OnVictory -= OnVictory;
+        StaticEventHandler.OnDefeat -= OnDefeat;
     }
 
     private void GetLevelDetail()
@@ -49,10 +66,10 @@ public class Level : SingletonMonoBehaviour<Level>
         goldGainedRate = UpgradeManager.Instance.statueUpgradeDetails.goldGainRatePerLevelDetails[goldGainRateLevel].amount;
 
         UpgradeManager.Instance.data.statueAttributeLevels.TryGetValue("maxMana", out int maxManaLevel);
-        maxMana = UpgradeManager.Instance.statueUpgradeDetails.goldGainRatePerLevelDetails[maxManaLevel].amount;
+        maxMana = UpgradeManager.Instance.statueUpgradeDetails.maxManaPerLevelDetails[maxManaLevel].amount;
 
-        UpgradeManager.Instance.data.statueAttributeLevels.TryGetValue("manaPerSecond", out int manaPerSecondLevel);
-        manaPerSecond = UpgradeManager.Instance.statueUpgradeDetails.goldGainRatePerLevelDetails[manaPerSecondLevel].amount;
+        UpgradeManager.Instance.data.statueAttributeLevels.TryGetValue("manaRecoverSpeed", out int manaPerSecondLevel);
+        manaPerSecond = UpgradeManager.Instance.statueUpgradeDetails.manaRecoverSpeedPerLevelDetails[manaPerSecondLevel].amount;
     }
 
     public bool SpawnUnit(UnitBaseStatsSO unitDetails, EnemyDetailsSO enemyDetails = null)
@@ -60,13 +77,14 @@ public class Level : SingletonMonoBehaviour<Level>
         bool isEnemy = enemyDetails != null;
         Vector3 spawnPos = isEnemy ? enemySpawnPos : playerSpawnPos;
         Unit unit = PoolManager.Instance.ReuseComponent<Unit>( 
-                                spawnPos, Quaternion.Euler(0, isEnemy ? 180 : 0, 0));
+                                spawnPos, Quaternion.identity);
         int unitLevel = 0;
         if (!isEnemy)
             unitLevel = UpgradeManager.Instance.data.unitLevels[unitDetails.unitName];
+        else unitLevel = enemyDetails.level - 1;
         unit.Initialized(unitDetails, unitLevel, isEnemy);
 
-       unit.gameObject.SetActive(true);
+        unit.gameObject.SetActive(true);
 
         // Set up enemy behaviour
         Enemy enemy = unit.GetComponent<Enemy>();
@@ -99,5 +117,11 @@ public class Level : SingletonMonoBehaviour<Level>
     public GameObject GetStatue(bool isEnemy)
     {
         return isEnemy ? enemyStatue : playerStatue;
+    }
+
+    public void ExecuteSpell(SpellBase spell)
+    {
+        spell.Initialized(UpgradeManager.Instance.data.spellLevels[spell.spellDetails.spellName]);
+        spell.Execute();
     }
 }

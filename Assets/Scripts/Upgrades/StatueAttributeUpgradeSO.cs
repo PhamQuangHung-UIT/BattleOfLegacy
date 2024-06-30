@@ -6,45 +6,103 @@ using UnityEngine;
 public class StatueAttributeUpgradeSO : ScriptableObject
 {
     [System.Serializable]
-    public struct AttributeLevel
+    public struct StatueAttributeUpgrade
     {
         public float amount;
+        public bool isGemUpgrade;
         public int upgradeCost;
     }
 
+    public struct StatueAttribute
+    {
+        public string name;
+        public string title;
+        public string description;
+        public Sprite icon;
+        public StatueAttributeUpgrade[] upgradeDetails;
+
+        public StatueAttribute(string name, string title, string description, Sprite icon, StatueAttributeUpgrade[] upgradeDetails)
+        {
+            this.name = name;
+            this.title = title;
+            this.description = description;
+            this.icon = icon;
+            this.upgradeDetails = upgradeDetails;
+        }
+    }
+    // Statue Health
+    public string statueHealthTitle = "Gold Rate Increase";
+
     public Sprite statueHealthIcon;
 
-    public AttributeLevel[] statueHealthPerLevelDetails;
+    public StatueAttributeUpgrade[] statueHealthPerLevelDetails;
 
-    public string StatueHealthDescription(int index)
-    {
-        return $"Increase the statue health to <color=cyan>{statueHealthPerLevelDetails[index].amount}</color>.";
-    }
+    public string statueHealthDescription  = "Increase statue max health";
+
+    // Max mana
+    public string maxManaTitle = "Max Mana Increase";
 
     public Sprite maxManaIcon;
 
-    public AttributeLevel[] maxManaPerLevelDetails;
+    public StatueAttributeUpgrade[] maxManaPerLevelDetails;
 
-    public string MaxManaDescription(int index)
-    {
-        return $"Increase max mana to {maxManaPerLevelDetails[index].amount} mana.";
-    }
+    public string maxManaDescription = "Increase maximum mana can be held";
 
-    public Sprite manaPerSecondIcon;
+    // Mana Recover Speed
+    public string manaRecoverSpeedTitle = "Mana Recover Speed Increase";
 
-    public AttributeLevel[] manaPerSecondPerLevelDetails;
+    public Sprite manaRecoverSpeedIcon;
 
-    public string ManaPerSecondDescription(int index)
-    {
-        return $"Increase mana generating speed to {maxManaPerLevelDetails[index].amount} mana/s.";
-    }
+    public StatueAttributeUpgrade[] manaRecoverSpeedPerLevelDetails;
+
+    public string manaRecoverSpeedDescription = "Increase mana recovering speed";
+
+    // Gold gain rate
+    public string goldGainRateTitle = "Gold Rate Increase";
 
     public Sprite goldGainRateIcon;
 
-    public AttributeLevel[] goldGainRatePerLevelDetails;
+    public StatueAttributeUpgrade[] goldGainRatePerLevelDetails;
 
-    public string GoldGainRateDescription(int index)
+    public string goldGainRateDescription = "Increase the gold receving from the enemy";
+
+    // Spell slot
+    public string maxSpellSlotTitle = "Maximum Spell Slot Increase";
+
+    public Sprite maxSpellSlotIcon;
+
+    public StatueAttributeUpgrade[] maxSpellSlotPerLevelDetails;
+
+    public string maxSpellSlotDescription = "Increase the maximum spell slot a player can hold";
+
+    public Dictionary<string, StatueAttribute> attributeList = new();
+
+    public void Init()
     {
-        return $"Increase the gold dropped from the enemy to {maxManaPerLevelDetails[index].amount * 100}%.";
+        attributeList.Add("statueHealth", new("statueHealth",
+                                              statueHealthTitle,
+                                              statueHealthDescription,
+                                              statueHealthIcon,
+                                              statueHealthPerLevelDetails));
+        attributeList.Add("maxMana", new("maxMana",
+                                         maxManaTitle,
+                                         maxManaDescription,
+                                         maxManaIcon,
+                                         maxManaPerLevelDetails));
+        attributeList.Add("manaRecoverSpeed", new("manaRecoverSpeed",
+                                                  manaRecoverSpeedTitle,
+                                                  manaRecoverSpeedDescription,
+                                                  manaRecoverSpeedIcon,
+                                                  manaRecoverSpeedPerLevelDetails));
+        attributeList.Add("goldGainRate", new("goldGainRate",
+                                              goldGainRateTitle,
+                                              goldGainRateDescription,
+                                              goldGainRateIcon,
+                                              goldGainRatePerLevelDetails));
+        attributeList.Add("maxSpellSlot", new("maxSpellSlot",
+                                                   maxSpellSlotTitle,
+                                                   maxSpellSlotDescription,
+                                                   maxSpellSlotIcon,
+                                                   maxSpellSlotPerLevelDetails));
     }
 }

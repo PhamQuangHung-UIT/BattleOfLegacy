@@ -14,23 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allObtainableUnit:
   - {fileID: 11400000, guid: 7ad07788ff70e914c81ba4c1a446b4cb, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 40661b252d9378946bb6950c520bee5f, type: 2}
   allObtainableSpell:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  unitDisableColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {fileID: 1321729903246972838, guid: c0455e9e9cc86ed4eb0ecd987642095f, type: 3}
+  beginUnitAlignment:
+  - {fileID: 11400000, guid: 7ad07788ff70e914c81ba4c1a446b4cb, type: 2}
+  beginSpellAlignment:
+  - {fileID: 1321729903246972838, guid: c0455e9e9cc86ed4eb0ecd987642095f, type: 3}
   introMusic: {fileID: 8300000, guid: 8de77573dd2fe6748ab12d4313323f7b, type: 3}
   levelMusic:
-  - levelType: 0
-    music: {fileID: 0}
+  - levelType: 1
+    music: {fileID: 8300000, guid: a4dbaff0bafc656498ba269ceeb920d7, type: 3}
+  defaultAttributeColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  goldValueColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
+  gemValueColor: {r: 1, g: 0, b: 0, a: 1}
+  maxHealthAttributeColor: {r: 0.909804, g: 0.26666668, b: 0.26666668, a: 1}
+  statueAttributeColor: {r: 0, g: 1, b: 1, a: 1}
+  disableColor: {r: 0.5803922, g: 0.5803922, b: 0.5803922, a: 1}
+  disableColorForCover: {r: 0, g: 0, b: 0, a: 0.49803922}
+  healthIcon: {fileID: 21300000, guid: cdec3e288e39793459b54f7df224b356, type: 3}
+  attackIcon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
+  attackRangeIcon: {fileID: 21300000, guid: a0017a1ebddfe6f469b4c0cddf912ffb, type: 3}
+  speedIcon: {fileID: 21300000, guid: c90605e3021c540408017e6152f162bb, type: 3}
+  timeIcon: {fileID: 21300000, guid: 21900a4879ceb054c8600c86de250a6f, type: 3}
+  gemIcon: {fileID: 21300000, guid: 57b330d706ad9f442a0a894b7a057f23, type: 3}
+  goldIcon: {fileID: 21300000, guid: c4d4baa7da618eb46b8b2a969ee16ee1, type: 3}

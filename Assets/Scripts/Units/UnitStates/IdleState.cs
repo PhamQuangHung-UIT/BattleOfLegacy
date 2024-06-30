@@ -20,6 +20,6 @@ public class IdleState : UnitBaseState
     public override void Exit() 
     { 
         base.Exit();
-        animEvent.CallOnStopUnitAnim(UnitState.Idle);
+        //animEvent.CallOnStopUnitAnim(UnitState.Idle);
     }
 }

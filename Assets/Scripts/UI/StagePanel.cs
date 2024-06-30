@@ -12,7 +12,8 @@ public class StagePanel : MonoBehaviour
     [SerializeField] Button nextButton, prevButton, playButton;
     [SerializeField] TextMeshProUGUI rewardValue;
     [SerializeField] TextMeshProUGUI firstTimeRewardGoldValue, firstTimeRewardGemValue;
-    int selectedLevel, currentLevel;
+    [SerializeField] GameObject firstTimeRewardParent;
+    public static int selectedLevel, currentLevel;
     private void Awake()
     {
         selectedLevel = LevelManager.Instance.data.selectedLevel;
@@ -35,32 +36,31 @@ public class StagePanel : MonoBehaviour
 
     private void Play()
     {
+        LevelManager.Instance.currentLevelIndex = selectedLevel;
         SceneManager.sceneLoaded += (scene, mode) =>
         {
-            Level.Instance.levelDetails = LevelManager.Instance.levelDetails[selectedLevel - 1];
+            Level.Instance.levelDetails = LevelManager.Instance.levelDetails[selectedLevel];
         };
         GameManager.Instance.GoToLevel();
     }
 
     void OnSelectLevel(int level)
     {
-        var levelDetails = LevelManager.Instance.levelDetails[level - 1];
-        if (level == 1)
+        var levelDetails = LevelManager.Instance.levelDetails[level];
+        prevButton.gameObject.SetActive(true);
+        nextButton.gameObject.SetActive(true);
+        if (level == 0)
         {
             prevButton.gameObject.SetActive(false);
-        } else if (level == currentLevel)
+        }
+        if (level == currentLevel)
         {
             firstTimeRewardGoldValue.text = levelDetails.firstTimeRewardedGold.ToString();
             firstTimeRewardGemValue.text = levelDetails.rewardedGems.ToString();
             nextButton.gameObject.SetActive(false);
-        } else
-        {
-            prevButton.gameObject.SetActive(true);
-            nextButton.gameObject.SetActive(true);
         }
         rewardValue.text = levelDetails.replayRewardedGold.ToString();
-        firstTimeRewardGemValue.gameObject.SetActive(level == currentLevel);
-        firstTimeRewardGoldValue.gameObject.SetActive(level == currentLevel);
-        stageText.text = $"Stage {selectedLevel}";
+        firstTimeRewardParent.SetActive(level == currentLevel);
+        stageText.text = $"Stage {selectedLevel + 1}";
     }
 }

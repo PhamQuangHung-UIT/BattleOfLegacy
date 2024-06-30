@@ -9,10 +9,9 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 {
     private const string sfxVolumeKey = "sfxVolume";
     private const string musicVolumeKey = "musicVolume";
+    public float sfxVolume;
 
     AudioSource musicAudioSource;
-
-    [HideInInspector] public float sfxVolume, musicVolume;
 
     protected override void Awake()
     {
@@ -29,8 +28,8 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
 
     private void InitializeVolume()
     {
-        sfxVolume = PlayerPrefs.GetFloat(sfxVolumeKey, 1);
-        musicVolume = PlayerPrefs.GetFloat(musicVolumeKey, 1);
+        sfxVolume = PlayerPrefs.GetFloat(sfxVolumeKey, 0.8f);
+        var musicVolume = PlayerPrefs.GetFloat(musicVolumeKey, 0.8f);
         var sliders = FindObjectsOfType<CustomSlider>(true);
         var sfxSlider = sliders.First(s => s.CompareTag("SFXSlider"));
         var musicSlider = sliders.First(s => s.CompareTag("MusicSlider"));
@@ -38,10 +37,12 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
         if (sfxSlider != null)
         {
             sfxSlider.SetValue(sfxVolume);
+            sfxSlider.onValueChange.AddListener(OnSfxVolumeChange);
         }
         if (musicSlider != null)
         {
             musicSlider.SetValue(musicVolume);
+            musicSlider.onValueChange.AddListener(OnMusicVolumeChange);
         }
     }
 
@@ -49,37 +50,35 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     {
         switch (scene.name)
         {
-            case "Main Menu":
-            case "Select Level":
+            case "Level":
+                musicAudioSource.clip = Level.Instance.levelDetails.currentLevelTheme.backgroundMusic;
+                musicAudioSource.Play();
+                break;
+            default:
                 if (musicAudioSource.clip != GameManager.Instance.settings.introMusic)
                 {
                     musicAudioSource.clip = GameManager.Instance.settings.introMusic;
                     musicAudioSource.Play();
                 }
                 break;
-            default:
-                musicAudioSource.clip = Level.Instance.levelDetails.currentLevelTheme.backgroundMusic;
-                break;
         }
-        
+        if (scene.name == "Level" || scene.name == "Main Menu")
+        {
+            InitializeVolume();
+        }
     }
 
     public void OnSfxVolumeChange(float volume)
     {
+        PlayerPrefs.SetFloat(sfxVolumeKey, volume);
+        StaticEventHandler.CallOnSFXVolumeChange(sfxVolume, volume);
         sfxVolume = volume;
-        var objects = FindObjectsOfType<SoundEffect>();
-        foreach (SoundEffect obj in objects)
-        {
-            obj.GetComponent<AudioSource>().volume = sfxVolume;
-        }
-        PlayerPrefs.SetFloat(sfxVolumeKey, sfxVolume);
     }
 
     public void OnMusicVolumeChange(float volume)
     {
-        musicVolume = volume;
-        musicAudioSource.volume = musicVolume;
-        PlayerPrefs.SetFloat(musicVolumeKey, musicVolume);
+        musicAudioSource.volume = volume;
+        PlayerPrefs.SetFloat(musicVolumeKey, volume);
     }
 
     public void PlaySound(SoundEffectSO sound)

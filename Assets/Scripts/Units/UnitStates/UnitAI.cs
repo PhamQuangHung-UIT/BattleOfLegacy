@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class UnitAI : MonoBehaviour
 {
     UnitBaseState currentState;
@@ -69,5 +70,6 @@ public class UnitAI : MonoBehaviour
     {
         currentState.currentStateEvent = UnitBaseState.StateEvent.Exit;
         currentState.nextState = unitStates[UnitState.Dead];
+        Level.Instance.unitList.Remove(unit);
     }
 }

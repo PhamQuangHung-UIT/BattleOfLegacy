@@ -4,12 +4,15 @@ using UnityEngine;
 
 public abstract class SpellBase : MonoBehaviour
 {
-    [HideInInspector] public SpellDetailsSO spellDetails;
+    public SpellDetailsSO spellDetails;
     [HideInInspector] public int level = 1;
-
-    public void Initialized(SpellDetailsSO spellDetails, int level)
+    private void Awake()
     {
-        this.spellDetails = spellDetails;
+        spellDetails.Init();
+    }
+
+    public void Initialized(int level)
+    {
         this.level = level;
     }
     /// <summary>

@@ -4,25 +4,41 @@ using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class Projectile: MonoBehaviour
 {
     Vector2 direction;
-    HitpointEvent target;
     float damage = 0;
     ProjectileSO projectileDetails;
     Animator anim;
+    SpriteRenderer spriteRenderer;
+    BoxCollider2D col;
     Unit lastHitUnit;
     float remainTraversal;
+    bool isEnemyProjectile;
 
-    public void Initialized(Vector2 direction, float damage, ProjectileSO projectileDetails)
+    private void Awake()
     {
-        this.direction = direction;
-        this.damage = damage;
-        this.projectileDetails = projectileDetails;
         anim = GetComponent<Animator>();
+        col = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void Initialized(Unit owner, float damage, ProjectileSO projectileDetails)
+    {
+        float yOffset = owner.GetComponent<BoxCollider2D>().offset.y;
+        transform.position = owner.transform.position;
+        transform.position = transform.position + new Vector3(0, yOffset, 0);
+        direction = isEnemyProjectile ? Vector2.left : -Vector2.left;
+        spriteRenderer.flipX = isEnemyProjectile;
+        this.damage = damage;
+        this.isEnemyProjectile = owner.isEnemy;
+        this.projectileDetails = projectileDetails;
         anim.runtimeAnimatorController = projectileDetails.animatorController;
         lastHitUnit = null;
         remainTraversal = projectileDetails.maxProjectileRange;
+        col.size = projectileDetails.size;
+        col.offset = new(0, projectileDetails.size.y / 2);
     }
 
     private void OnEnable()
@@ -51,7 +67,7 @@ public class Projectile: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Unit unit) && lastHitUnit != unit)
+        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.isEnemy ^ isEnemyProjectile && lastHitUnit != unit)
         {
             lastHitUnit = unit;
             DealDamage(unit);
@@ -67,6 +83,8 @@ public class Projectile: MonoBehaviour
                     }
 
                 }
+                anim.ResetTrigger("Move");
+                anim.SetTrigger("Hit");
                 StartCoroutine(SelfDestroy(0.25f));
             }
         }
@@ -81,13 +99,4 @@ public class Projectile: MonoBehaviour
             projectileDetails.attachedEffect.ApplyEffect(unit);
         }
     }
-
-    #region Validation
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        ValidateUtilities.Assert(target != null ^ direction != null);
-    }
-#endif
-    #endregion
 }

@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
 {
-    public Vector3 enemySpawnPos;
     [HideInInspector] public bool spawnConsistent;
     [HideInInspector] public float maxMana;
     [HideInInspector] public float currentManaAmount;
-    [HideInInspector] public float manaPerSecond;
+    [HideInInspector] public float manaRecoverSpeed;
     List<EnemyDetailsSO> enemyCastList = new();
-    private readonly float regenerateManaTimeInterval = 0.25f;
+    private readonly float regenerateManaTimeInterval = 0.2f;
 
     enum SpawnOption
     {
@@ -25,6 +24,9 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
 
     private void Start()
     {
+        currentManaAmount = Level.Instance.levelDetails.enemyMaxMana;
+        maxMana = currentManaAmount;
+        manaRecoverSpeed = Level.Instance.levelDetails.enemyManaPerSecond;
         spawnConsistent = Level.Instance.levelDetails.enemySpawnConsistent;
         enemyCastList.AddRange(Level.Instance.levelDetails.enemySpawnableList);
         StartCoroutine(SpawnEnemies());
@@ -34,8 +36,8 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
     private IEnumerator RegenerateMana()
     {
         yield return new WaitForSeconds(regenerateManaTimeInterval);
-        currentManaAmount += manaPerSecond * regenerateManaTimeInterval;
-        if (currentManaAmount > maxMana)
+        currentManaAmount += manaRecoverSpeed * regenerateManaTimeInterval;
+        if (currentManaAmount > maxMana && spawnOption == SpawnOption.Slow)
         {
             spawnOption = SpawnOption.Fast;
         }
@@ -56,27 +58,36 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
 
     private IEnumerator SpawnEnemies()
     {
-        SpawnOption option = SpawnOption.Normal;
+        SpawnEnemy();
         while (!Level.Instance.isGameEnded)
         {
-            if (option == SpawnOption.Slow)
+            if (spawnOption == SpawnOption.Slow)
             {
-                yield return new WaitForSeconds(6);
-            } else if (option == SpawnOption.Normal)
+                yield return new WaitForSeconds(5);
+            }
+            else if (spawnOption == SpawnOption.Normal)
             {
-                yield return new WaitForSeconds(4);
-            } else
+                yield return new WaitForSeconds(3.5f);
+            }
+            else
             {
-                yield return new WaitForSeconds(2);
+                yield return new WaitForSeconds(1.5f);
             }
 
-            // Get random enemy
-            EnemyDetailsSO enemyDetails = GetRandomEnemy();
-            if (enemyDetails == null)
-                spawnOption = SpawnOption.Slow;
+            SpawnEnemy();
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        // Get random enemy
+        EnemyDetailsSO enemyDetails = GetRandomEnemy();
+        if (enemyDetails == null)
+            spawnOption = SpawnOption.Slow;
+        else
+        {
             // Spawn enemy
             Level.Instance.SpawnUnit(enemyDetails.unitDetails, enemyDetails);
-
         }
     }
 
