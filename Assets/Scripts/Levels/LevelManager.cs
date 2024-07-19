@@ -29,7 +29,10 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
 
     public void CompleteLevel()
     {
-        data.currentLevel = currentLevelIndex;
+        if (data.currentLevel == data.selectedLevel && data.currentLevel < levelDetails.Length - 1)
+            data.currentLevel++;
+        if (data.selectedLevel < levelDetails.Length - 1)
+            data.selectedLevel++;
         StorageUtils.Save(data, fileName);
     }
 }

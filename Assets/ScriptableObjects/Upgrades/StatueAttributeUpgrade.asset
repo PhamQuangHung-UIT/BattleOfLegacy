@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9bf718b151be54e9b4960ccf74a7f5, type: 3}
   m_Name: StatueAttributeUpgrade
   m_EditorClassIdentifier: 
-  statueHealthTitle: Gold Rate Increase
+  statueHealthTitle: Max health
+  statueHealthUpgradeTitle: Max Health Increase
   statueHealthIcon: {fileID: 21300000, guid: d5abe6941c64c6443ad04c48843ca3f8, type: 3}
   statueHealthPerLevelDetails:
   - amount: 250
@@ -46,7 +47,8 @@ MonoBehaviour:
     isGemUpgrade: 0
     upgradeCost: 250000
   statueHealthDescription: Increase statue max health
-  maxManaTitle: Max Mana Increase
+  maxManaTitle: Max mana
+  maxManaUpgradeTitle: Max Mana Increase
   maxManaIcon: {fileID: 21300000, guid: 348ab73c76a963143ab4dcb68bfbe958, type: 3}
   maxManaPerLevelDetails:
   - amount: 150
@@ -74,7 +76,8 @@ MonoBehaviour:
     isGemUpgrade: 0
     upgradeCost: 100000
   maxManaDescription: Increase maximum mana can be held
-  manaRecoverSpeedTitle: Mana Recover Speed Increase
+  manaRecoverSpeedTitle: Mana recover speed
+  manaRecoverSpeedUpgradeTitle: Mana Recover Speed Increase
   manaRecoverSpeedIcon: {fileID: 21300000, guid: 86e440873b89fa44a823b6a7d0515d15, type: 3}
   manaRecoverSpeedPerLevelDetails:
   - amount: 3
@@ -99,7 +102,8 @@ MonoBehaviour:
     isGemUpgrade: 0
     upgradeCost: 100000
   manaRecoverSpeedDescription: Increase mana recovering speed
-  goldGainRateTitle: Gold Rate Increase
+  goldGainRateTitle: Bonus gold per enemy
+  goldGainRateUpgradeTitle: Gold Rate Increase
   goldGainRateIcon: {fileID: 21300000, guid: 9f5a9ae761b2f214ca8c9678c389bc0d, type: 3}
   goldGainRatePerLevelDetails:
   - amount: 15
@@ -119,6 +123,7 @@ MonoBehaviour:
     upgradeCost: 25000
   goldGainRateDescription: Increase the gold receving from the enemy
   maxSpellSlotTitle: Maximum Spell Slot Increase
+  maxSpellSlotUpgradeTitle: Maximum Spell Slot Increase
   maxSpellSlotIcon: {fileID: 21300000, guid: 76b839023dbb25d4cbf324ccfabf4ab4, type: 3}
   maxSpellSlotPerLevelDetails:
   - amount: 1

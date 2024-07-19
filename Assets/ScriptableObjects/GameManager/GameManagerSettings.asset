@@ -29,6 +29,7 @@ MonoBehaviour:
   goldValueColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
   gemValueColor: {r: 1, g: 0, b: 0, a: 1}
   maxHealthAttributeColor: {r: 0.909804, g: 0.26666668, b: 0.26666668, a: 1}
+  attackDamageAttributeColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
   statueAttributeColor: {r: 0, g: 1, b: 1, a: 1}
   disableColor: {r: 0.5803922, g: 0.5803922, b: 0.5803922, a: 1}
   disableColorForCover: {r: 0, g: 0, b: 0, a: 0.49803922}

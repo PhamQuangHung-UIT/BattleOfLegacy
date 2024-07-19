@@ -12,7 +12,11 @@ public class UpgradeManager : SingletonMonoBehaviour<UpgradeManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(Instance.gameObject);
+    }
+
+    private void OnEnable()
+    {
         statueUpgradeDetails.Init();
         data = new();
         StorageUtils.Load(data, fileName);

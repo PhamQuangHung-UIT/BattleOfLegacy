@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
 public class UpgradeSerializableData : ISerializable
 {
@@ -33,13 +34,16 @@ public class UpgradeSerializableData : ISerializable
     {
         using BinaryReader reader = new(stream);
         int count = reader.ReadInt32();
+        unitLevels.Clear();
         for (int i = 0; i < count; i++)
         {
             string name = reader.ReadString();
             int level = reader.ReadInt32();
+            Debug.Log($"{name}: {level}");
             unitLevels.Add(name, level);
         }
         count = reader.ReadInt32();
+        spellLevels.Clear();
         for (int i = 0; i < count; i++)
         {
             string attributeName = reader.ReadString();

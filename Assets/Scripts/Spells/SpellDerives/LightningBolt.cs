@@ -1,16 +1,17 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class LightningBolt : SpellBase
 {
     public GameObject lightningPrefab;
     float damage;
-    private const float strikeRadius = 8f;
+    private const float strikeRadius = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        damage = spellDetails.spellAttributeMapPerLevel[level]["Damage"];
+        damage = spellDetails.spellAttributeMapPerLevel[level]["Damage"].value;
     }
 
     public override void Execute()
@@ -22,13 +23,12 @@ public class LightningBolt : SpellBase
     {
         float xCenter = Camera.main.transform.position.x;
         float yCenter = Level.Instance.playerSpawnPos.y;
-        Vector2 center = new(xCenter, yCenter);
         var lightningObject = Instantiate(lightningPrefab, new Vector3(xCenter, yCenter, -1), Quaternion.identity);
         Destroy(lightningObject, 0.8f);
         yield return new WaitForSeconds(0.8f);
-        foreach (var unit in Level.Instance.unitList)
+        foreach (var unit in Level.Instance.unitList.Where(u => u.isEnemy).ToList())
         {
-            if (unit.isEnemy && Vector2.Distance(center, unit.transform.position) <= strikeRadius)
+            if (Mathf.Abs(xCenter - unit.transform.position.x) <= strikeRadius)
             {
                 unit.GetComponent<HitpointEvent>().CallOnHitPointChange(-damage);
             }

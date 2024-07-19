@@ -9,10 +9,10 @@ public class CustomAttributeView : MonoBehaviour
     public TextMeshProUGUI attributeTitle, attributeValue;
     public Image attributeIcon;
     
-    public void SetUp(string title, object value, Sprite icon)
+    public void SetUp(string title, object value, ValueType valueType, Sprite icon)
     {
         attributeTitle.text = title;
-        attributeValue.text = value.ToString();
+        attributeValue.text = valueType == ValueType.Percentage ? $"{value:P}" : $"{value}";
         attributeIcon.sprite = icon;
     }
 

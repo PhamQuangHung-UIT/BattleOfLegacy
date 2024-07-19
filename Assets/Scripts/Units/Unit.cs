@@ -24,12 +24,10 @@ public class Unit : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public List<EffectSO> effectList = new();
 
-    HitpointEvent hitpointEvent;
     SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        hitpointEvent = GetComponent<HitpointEvent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -49,8 +47,7 @@ public class Unit : MonoBehaviour
 
     private void OnEnable()
     {
-        InitializeHealth();
-        gameObject.layer = isEnemy ? LayerMask.NameToLayer("Enemy") : 1;
+        gameObject.layer = isEnemy ? LayerMask.NameToLayer("Enemy") : LayerMask.NameToLayer("Player");
         spriteRenderer.flipX = isEnemy;
     }
 
@@ -72,10 +69,6 @@ public class Unit : MonoBehaviour
         return res;
     }
 
-    private void InitializeHealth()
-    {
-        hitpointEvent.CallOnHitPointChange(currentHealth);
-    }
     #region UNITY_EDITOR
 #if UNITY_EDITOR
     private void OnValidate()

@@ -23,7 +23,10 @@ public class UnitSlotPanel : SlotPanel
 
     protected override void OnPress(int i)
     {
-        Level.Instance.SpawnUnit(units[i]);
-        Level.Instance.currentMana -= units[i].manaCost;
+        if (!Level.Instance.isGameEnded)
+        {
+            Level.Instance.SpawnUnit(units[i]);
+            Level.Instance.currentMana -= units[i].manaCost;
+        }
     }
 }

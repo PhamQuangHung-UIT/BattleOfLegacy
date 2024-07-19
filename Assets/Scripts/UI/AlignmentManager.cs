@@ -53,7 +53,7 @@ public class AlignmentManager : MonoBehaviour
 
     private bool OnClickItem(UnitBaseStatsSO unitDetails)
     {
-        if (!unitAlignment.Exists(u => u = unitDetails) && spellAlignment.Count < 10)
+        if (!unitAlignment.Exists(u => u == unitDetails) && unitAlignment.Count < 10)
         {
             unitAlignment.Add(unitDetails);
             RenderSlots();

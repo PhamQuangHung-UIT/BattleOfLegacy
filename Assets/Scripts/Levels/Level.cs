@@ -78,7 +78,7 @@ public class Level : SingletonMonoBehaviour<Level>
         Vector3 spawnPos = isEnemy ? enemySpawnPos : playerSpawnPos;
         Unit unit = PoolManager.Instance.ReuseComponent<Unit>( 
                                 spawnPos, Quaternion.identity);
-        int unitLevel = 0;
+        int unitLevel;
         if (!isEnemy)
             unitLevel = UpgradeManager.Instance.data.unitLevels[unitDetails.unitName];
         else unitLevel = enemyDetails.level - 1;

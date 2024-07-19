@@ -9,6 +9,7 @@ public class Slot : MonoBehaviour
 {
     float cooldownDuration = 1;
     int cost;
+    bool isCooldownEnd = true;
     Button currentBtn;
     [SerializeField] Image cover, cooldownImage, icon;
     [SerializeField] TextMeshProUGUI costText;
@@ -21,7 +22,7 @@ public class Slot : MonoBehaviour
 
     private void Update()
     {
-        if (Level.Instance.currentMana < cost)
+        if (Level.Instance.currentMana < cost || !isCooldownEnd)
         {
             cover.color = GameManager.Instance.settings.disableColorForCover;
             currentBtn.enabled = false;
@@ -35,7 +36,7 @@ public class Slot : MonoBehaviour
 
     public void OnPress()
     {
-        currentBtn.enabled = false;
+        isCooldownEnd = false;
         StartCoroutine(Cooldown());
     }
 
@@ -50,7 +51,7 @@ public class Slot : MonoBehaviour
             cooldownImage.fillAmount = 1 - currentTime / cooldownDuration;
         }
         cooldownImage.fillAmount = 0;
-        currentBtn.enabled = true;
+        isCooldownEnd = true;
     }
 
     public void SetIcon(Sprite iconImage)

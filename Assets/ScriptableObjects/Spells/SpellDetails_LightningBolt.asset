@@ -25,6 +25,7 @@ MonoBehaviour:
     attributeList:
     - name: Damage
       value: 200
+      valueType: 1
       displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
       icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
   - isGoldUpgrade: 1
@@ -33,6 +34,7 @@ MonoBehaviour:
     attributeList:
     - name: Damage
       value: 300
+      valueType: 1
       displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
       icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
   - isGoldUpgrade: 1
@@ -41,6 +43,7 @@ MonoBehaviour:
     attributeList:
     - name: Damage
       value: 400
+      valueType: 1
       displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
       icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
   - isGoldUpgrade: 1
@@ -49,6 +52,7 @@ MonoBehaviour:
     attributeList:
     - name: Damage
       value: 500
+      valueType: 1
       displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
       icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
   - isGoldUpgrade: 1
@@ -57,6 +61,7 @@ MonoBehaviour:
     attributeList:
     - name: Damage
       value: 600
+      valueType: 1
       displayColor: {r: 1, g: 0.8352942, b: 0.41176474, a: 1}
       icon: {fileID: 21300000, guid: 043e9ce4e1345c44e85bd8f867ddc8b1, type: 3}
   spellPrefab: {fileID: 3223598841702353486, guid: c0455e9e9cc86ed4eb0ecd987642095f, type: 3}

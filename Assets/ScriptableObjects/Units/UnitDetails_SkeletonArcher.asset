@@ -27,7 +27,7 @@ MonoBehaviour:
   critStrikeDamage: 0
   attackRange: 15
   movementSpeed: 3
-  animationController: {fileID: 9100000, guid: 654f7b72f2de7b049a5556823abb6840, type: 2}
+  animationController: {fileID: 22100000, guid: 0170c329b3e6b064aaa372103ac270bb, type: 2}
   upgradeDetails:
   - cost: 0
     unitMaxHealth: 200

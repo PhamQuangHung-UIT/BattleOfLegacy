@@ -30,6 +30,8 @@ public class SpellDetailsContent: MonoBehaviour
         this.spellDetails = spellDetails;
         if (!UpgradeManager.Instance.data.spellLevels.TryGetValue(spellDetails.spellName, out level))
             level = -1;
+        upgradeButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.AddListener(Upgrade);
         RenderContent();
     }
 
@@ -65,7 +67,7 @@ public class SpellDetailsContent: MonoBehaviour
             foreach (var attribute in spellDetails.spellUpgradeList[level].attributeList)
             {
                 CustomAttributeView attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-                attributeView.SetUp(attribute.name, attribute.value, attribute.icon);
+                attributeView.SetUp(attribute.name, attribute.value, attribute.valueType, attribute.icon);
                 attributeView.SetColor(settings.maxHealthAttributeColor);
             }
 

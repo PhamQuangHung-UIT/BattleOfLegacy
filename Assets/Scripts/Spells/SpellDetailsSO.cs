@@ -5,10 +5,22 @@ using UnityEngine;
 public class SpellDetailsSO : ScriptableObject
 {
     [System.Serializable]
+    public struct Value
+    {
+        public float value;
+        public ValueType valueType;
+        public Value(float value, ValueType valueType)
+        {
+            this.value = value;
+            this.valueType = valueType;
+        }
+    }
+    [System.Serializable]
     public class SpellAttribute
     {
         public string name;
         public float value;
+        public ValueType valueType;
         public Color displayColor;
         public Sprite icon;
     }
@@ -63,17 +75,17 @@ public class SpellDetailsSO : ScriptableObject
     #endregion
     public GameObject spellPrefab;
 
-    [HideInInspector] public List<Dictionary<string, float>> spellAttributeMapPerLevel;
+    [HideInInspector] public List<Dictionary<string, Value>> spellAttributeMapPerLevel;
 
     public void Init()
     {
         spellAttributeMapPerLevel = new();
         foreach (var spellAttributes in spellUpgradeList)
         {
-            Dictionary<string, float> dict = new();
+            Dictionary<string, Value> dict = new();
             foreach (var attribute in spellAttributes.attributeList)
             {
-                dict.Add(attribute.name, attribute.value);
+                dict.Add(attribute.name, new(attribute.value, attribute.valueType));
             }
             spellAttributeMapPerLevel.Add(dict);
         }

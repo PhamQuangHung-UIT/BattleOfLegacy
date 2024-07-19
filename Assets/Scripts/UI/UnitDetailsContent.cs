@@ -30,6 +30,8 @@ public class UnitDetailsContent: MonoBehaviour
         this.unitDetail = unitDetail;
         if (!UpgradeManager.Instance.data.unitLevels.TryGetValue(unitDetail.unitName, out level))
             level = -1;
+        upgradeButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.AddListener(Upgrade);
         RenderContent();
     }
 
@@ -63,15 +65,15 @@ public class UnitDetailsContent: MonoBehaviour
 
             // Set up attributes
             CustomAttributeView attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp("Max Health", unitDetail.upgradeDetails[level].unitMaxHealth, settings.healthIcon);
+            attributeView.SetUp("Max Health", unitDetail.upgradeDetails[level].unitMaxHealth, ValueType.Absolute,settings.healthIcon);
             attributeView.SetColor(settings.maxHealthAttributeColor);
 
             attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp("Damage", unitDetail.upgradeDetails[level].unitDamage, settings.attackIcon);
+            attributeView.SetUp("Damage", unitDetail.upgradeDetails[level].unitDamage, ValueType.Absolute, settings.attackIcon);
             attributeView.SetColor(settings.attackDamageAttributeColor);
 
             attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp("Attack Range", unitDetail.attackRange, settings.attackRangeIcon);
+            attributeView.SetUp("Attack Range", unitDetail.attackRange, ValueType.Absolute, settings.attackRangeIcon);
             attributeView.SetColor(settings.defaultAttributeColor);
 
             /*attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
@@ -79,7 +81,7 @@ public class UnitDetailsContent: MonoBehaviour
             attributeView.SetColor(settings.defaultAttributeColor);*/
 
             attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp("Speed", unitDetail.upgradeDetails[level].unitMaxHealth, settings.speedIcon);
+            attributeView.SetUp("Speed", unitDetail.movementSpeed, ValueType.Absolute, settings.speedIcon);
             attributeView.SetColor(settings.defaultAttributeColor);
         } else
         {

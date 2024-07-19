@@ -24,6 +24,11 @@ class Hitpoint : MonoBehaviour
         hitpointEvent = GetComponent<HitpointEvent>();
     }
 
+    public void Init()
+    {
+        healthBar.Initialized(unit.isEnemy);
+    }
+
     public void OnEnable()
     {
         hitpointEvent.OnHitpointChange += HitpointEvent_OnHitpointChange;

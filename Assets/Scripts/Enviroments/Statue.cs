@@ -12,19 +12,20 @@ public class Statue : MonoBehaviour
     HitpointEvent hitpointEvent;
     SpriteRenderer spriteRenderer;
     HealthBarUI healthBarUI;
-    bool isEnemyStatue;
 
     private void Awake()
     {
         hitpointEvent = GetComponent<HitpointEvent>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         healthBarUI = GetComponentInChildren<HealthBarUI>();
-        healthBarUI.Initialized(isEnemyStatue);
+        healthBarUI.Initialized(IsEnemyStatue());
     }
+
+    private bool IsEnemyStatue() => (gameObject.layer & LayerMask.NameToLayer("Enemy")) != 0;
 
     private void Start()
     {
-        if ((gameObject.layer & LayerMask.NameToLayer("Enemy")) != 0)
+        if (IsEnemyStatue())
         {
             maxHealth = Level.Instance.levelDetails.enemyStatueMaxHealth;
         }
@@ -54,7 +55,7 @@ public class Statue : MonoBehaviour
         {
             spriteRenderer.sprite = destroyStatueSprite;
             smokeEffect.SetActive(true);
-            if (isEnemyStatue)
+            if (IsEnemyStatue())
             {
                 StaticEventHandler.CallOnVictory();
             }

@@ -13,7 +13,6 @@ public class Projectile: MonoBehaviour
     Animator anim;
     SpriteRenderer spriteRenderer;
     BoxCollider2D col;
-    Unit lastHitUnit;
     float remainTraversal;
     bool isEnemyProjectile;
 
@@ -32,10 +31,9 @@ public class Projectile: MonoBehaviour
         direction = isEnemyProjectile ? Vector2.left : -Vector2.left;
         spriteRenderer.flipX = isEnemyProjectile;
         this.damage = damage;
-        this.isEnemyProjectile = owner.isEnemy;
+        isEnemyProjectile = owner.isEnemy;
         this.projectileDetails = projectileDetails;
         anim.runtimeAnimatorController = projectileDetails.animatorController;
-        lastHitUnit = null;
         remainTraversal = projectileDetails.maxProjectileRange;
         col.size = projectileDetails.size;
         col.offset = new(0, projectileDetails.size.y / 2);
@@ -51,9 +49,7 @@ public class Projectile: MonoBehaviour
     {
         Vector3 movement = projectileDetails.speed * Time.deltaTime * direction;
         remainTraversal -= movement.magnitude;
-        if (remainTraversal > 0 && (projectileDetails.type == ProjectileType.Penetrate
-            || projectileDetails.type == ProjectileType.SingleTarget
-            && !lastHitUnit))
+        if (remainTraversal > 0)
         {
             transform.Translate(movement);
         }
@@ -67,9 +63,8 @@ public class Projectile: MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.isEnemy ^ isEnemyProjectile && lastHitUnit != unit)
+        if (collision.gameObject.TryGetComponent(out Unit unit) && unit.isEnemy ^ isEnemyProjectile)
         {
-            lastHitUnit = unit;
             DealDamage(unit);
             if (projectileDetails.type == ProjectileType.SingleTarget)
             {

@@ -20,7 +20,7 @@ MonoBehaviour:
   enemySpawnConsistent: 1
   enemySpawnableList:
   - {fileID: 11400000, guid: aa8e3421ff6172b44b1cf85cc2db468d, type: 2}
-  - {fileID: 11400000, guid: aa8e3421ff6172b44b1cf85cc2db468d, type: 2}
+  - {fileID: 11400000, guid: 2fa92c08878c66a488c36a8c0977d0e9, type: 2}
   enemyStatueMaxHealth: 250
   enemyMaxMana: 200
   enemyManaPerSecond: 10

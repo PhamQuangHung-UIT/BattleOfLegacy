@@ -229,7 +229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxVolume: 0
-  musicVolume: 0
 --- !u!82 &76839594
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1410,7 +1409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 210
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1571,19 +1570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 210
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: m_SizeDelta.y
       value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1005535542904999688, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1637,62 +1628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MusicVolumeSlider
       objectReference: {fileID: 0}
-    - target: {fileID: 5041774277910488320, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: m_TagString
-      value: MusicSlider
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 76839593}
     - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
       propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 76839593}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMusicVolumeChange
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMusicVolumeChange
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SoundManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SoundManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onIndexChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8068231033621528948, guid: f674a9ee68067d441a9c001366853103, type: 3}
-      propertyPath: onValueChange.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2305,6 +2244,7 @@ MonoBehaviour:
   currentLevelIndex: 1
   levelDetails:
   - {fileID: 11400000, guid: c01fc8e07e4af9c469e4ebd23e567ccd, type: 2}
+  - {fileID: 11400000, guid: 7b4fe3f95e0cc4344b7a6051e33f6cd8, type: 2}
 --- !u!4 &1512914814
 Transform:
   m_ObjectHideFlags: 0

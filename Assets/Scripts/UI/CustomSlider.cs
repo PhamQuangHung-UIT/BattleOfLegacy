@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,14 +14,13 @@ public class CustomSlider : MonoBehaviour
     readonly List<RectTransform> sliderElements = new();
     float widthPerElement;
     int elementCount;
-    int currentIndex;
+    public int currentIndex;
 
     public CustomSliderEvent onValueChange;
 
     public void SetValue(float value)
     {
         currentIndex = (int)(value * 10);
-        EnableSliderItemAtCurrentIndex();
         onValueChange?.Invoke(currentIndex / 10f);
     }
 
@@ -31,8 +31,20 @@ public class CustomSlider : MonoBehaviour
         {
             sliderElements.Add(transform.GetChild(i).gameObject.GetComponent<RectTransform>());
         }
-        widthPerElement = sliderElements[0].rect.width;
         elementCount = transform.childCount;
+
+        // Wait for the layout engine complete 
+        Invoke(nameof(GetElementWidth), 0.2f);
+    }
+
+    private void GetElementWidth()
+    {
+        widthPerElement = sliderElements[0].rect.width;
+    }
+
+    private void Start()
+    {
+        EnableSliderItemAtCurrentIndex();
     }
 
     void Update()

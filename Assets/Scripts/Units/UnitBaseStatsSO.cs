@@ -124,7 +124,7 @@ public class UnitBaseStatsSO : ScriptableObject
     #region Tooltip
     [Tooltip("Animation controller of the unit")]
     #endregion
-    public AnimatorController animationController;
+    public AnimatorOverrideController animationController;
 
     #region Header
     [Header("Upgrades")]

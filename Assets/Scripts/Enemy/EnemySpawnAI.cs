@@ -9,7 +9,7 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
     [HideInInspector] public float maxMana;
     [HideInInspector] public float currentManaAmount;
     [HideInInspector] public float manaRecoverSpeed;
-    List<EnemyDetailsSO> enemyCastList = new();
+    private readonly List<EnemyDetailsSO> enemyCastList = new();
     private readonly float regenerateManaTimeInterval = 0.2f;
 
     enum SpawnOption
@@ -35,11 +35,14 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
 
     private IEnumerator RegenerateMana()
     {
-        yield return new WaitForSeconds(regenerateManaTimeInterval);
-        currentManaAmount += manaRecoverSpeed * regenerateManaTimeInterval;
-        if (currentManaAmount > maxMana && spawnOption == SpawnOption.Slow)
+        while (!Level.Instance.isGameEnded)
         {
-            spawnOption = SpawnOption.Fast;
+            yield return new WaitForSeconds(regenerateManaTimeInterval);
+            currentManaAmount += manaRecoverSpeed * regenerateManaTimeInterval;
+            if (currentManaAmount > maxMana && spawnOption == SpawnOption.Slow)
+            {
+                spawnOption = SpawnOption.Fast;
+            }
         }
     }
 
@@ -63,11 +66,11 @@ public class EnemySpawnAI : SingletonMonoBehaviour<MonoBehaviour>
         {
             if (spawnOption == SpawnOption.Slow)
             {
-                yield return new WaitForSeconds(5);
+                yield return new WaitForSeconds(6.5f);
             }
             else if (spawnOption == SpawnOption.Normal)
             {
-                yield return new WaitForSeconds(3.5f);
+                yield return new WaitForSeconds(4f);
             }
             else
             {

@@ -29,16 +29,19 @@ public class StatueAttributeContent: MonoBehaviour
         this.statueAttributeDetails = statueAttributeDetails;
         if (!UpgradeManager.Instance.data.statueAttributeLevels.TryGetValue(statueAttributeDetails.name, out level))
             level = -1;
+        upgradeButton.onClick.RemoveAllListeners();
+        upgradeButton.onClick.AddListener(Upgrade);
         RenderContent();
     }
 
     public void RenderContent()
     {
-        statueAttributeTitleUI.text = statueAttributeDetails.title;
+        statueAttributeTitleUI.text = statueAttributeDetails.upgradeTitle;
         statueAttributeIconUI.sprite = statueAttributeDetails.icon;
-        statueAttributeDetails.title = statueAttributeDetails.description;
+        statueAttributeDescriptionUI.text = statueAttributeDetails.description;
 
-        attributeParent.transform.DetachChildren();
+        foreach (Transform obj in attributeParent.transform)
+            Destroy(obj.gameObject);
 
         if (level >= 0)
         {
@@ -62,7 +65,7 @@ public class StatueAttributeContent: MonoBehaviour
 
             // Set up attributes
             CustomAttributeView attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp(statueAttributeDetails.title, statueAttributeDetails.upgradeDetails[level].amount, statueAttributeDetails.icon);
+            attributeView.SetUp(statueAttributeDetails.title, statueAttributeDetails.upgradeDetails[level].amount, statueAttributeDetails.valueType, statueAttributeDetails.icon);
             attributeView.SetColor(settings.statueAttributeColor);
 
         } else

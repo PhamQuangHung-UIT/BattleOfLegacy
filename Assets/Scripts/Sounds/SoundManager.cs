@@ -16,14 +16,13 @@ public class SoundManager : SingletonMonoBehaviour<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(this);
-        musicAudioSource = GetComponent<AudioSource>();
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+        DontDestroyOnLoad(Instance);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        InitializeVolume();
+        musicAudioSource = GetComponent<AudioSource>();
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
     }
 
     private void InitializeVolume()

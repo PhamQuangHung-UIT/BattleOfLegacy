@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         {
             Level.Instance.currentMana = Level.Instance.maxMana;
         }
-        Level.Instance.goldGained += Mathf.RoundToInt(enemyDetails.goldAwarded * Level.Instance.goldGainedRate);
+        Level.Instance.goldGained += Mathf.RoundToInt(enemyDetails.goldAwarded * (1 + Level.Instance.goldGainedRate / 100));
         GoldDrop goldDrop = PoolManager.Instance.ReuseComponent<GoldDrop>(transform.position, transform.rotation);
         goldDrop.amount = enemyDetails.goldAwarded;
         goldDrop.gameObject.SetActive(true);

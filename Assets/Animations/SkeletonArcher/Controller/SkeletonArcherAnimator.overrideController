@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkeletonArcherAnimator
+  m_Controller: {fileID: 9100000, guid: d37c03820e45ffc4d86ab203941511a5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1fb26c607c5ccad4b8e97db868d8b718, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5102eb18f664691408e37689ae92b673, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3dbd4e96ebabdb94caf015443a2599b0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b13ad0fd7aa3b254d8723aa8c208e128, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c58e2cfab7a0bdb4c94cbcb79c18955f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 06b178b6f91dfc44691bc1e8dbd252b5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f7b6e12c59a75a54fa68e344402a8174, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f01d3cf5f1749bb4ab39b79943712ed2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9660ce3d9632aff419a241c1cf3c6893, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a52276f1780f1e84bb81b4429547ab30, type: 2}

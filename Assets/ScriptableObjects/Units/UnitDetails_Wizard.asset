@@ -27,9 +27,9 @@ MonoBehaviour:
   critStrikeDamage: 0
   attackRange: 10
   movementSpeed: 4
-  animationController: {fileID: 9100000, guid: 48d0b874a620f03479a807e6653275a2, type: 2}
+  animationController: {fileID: 22100000, guid: 893379a966cb51849bcff3391839cbd2, type: 2}
   upgradeDetails:
-  - cost: 5
+  - cost: 1
     unitMaxHealth: 250
     unitDamage: 60
     isGoldUpgrade: 0

@@ -4301,6 +4301,7 @@ GameObject:
   - component: {fileID: 756104190}
   - component: {fileID: 756104189}
   - component: {fileID: 756104188}
+  - component: {fileID: 756104191}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -4410,6 +4411,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756104186}
   m_CullTransparentMesh: 1
+--- !u!114 &756104191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756104186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e84e7b16ba0f541b55e1439ae06474, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768659394 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4173401561467852206, guid: dff78593c7232be42b4d5dd40969bf9d, type: 3}
@@ -9440,8 +9453,8 @@ MonoBehaviour:
   unitList: []
   playerStatue: {fileID: 2014015136}
   enemyStatue: {fileID: 2006441832}
-  victoryPanel: {fileID: 0}
-  defeatPanel: {fileID: 0}
+  victoryPanel: {fileID: 512941425}
+  defeatPanel: {fileID: 1546335846}
   goldGained: 0
   goldGainedRate: 1
   maxMana: 0

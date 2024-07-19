@@ -19,18 +19,18 @@ MonoBehaviour:
   attackProjectile: {fileID: 0}
   manaCost: 20
   cooldownInterval: 0
-  attackSpeed: 1
+  attackSpeed: 0.8
   attackSFX: {fileID: 11400000, guid: e6861c0848837a64c844beb990dffcae, type: 2}
   strikesPerAttack: 1
   attackAnimationDelay: 0.75
   critStrikeChance: 0
   critStrikeDamage: 0
   attackRange: 1
-  movementSpeed: 4.5
-  animationController: {fileID: 9100000, guid: 4dba2a4021db28541b114fb1a67c0875, type: 2}
+  movementSpeed: 4
+  animationController: {fileID: 22100000, guid: 87ce035a77098e54eba231db82ff796f, type: 2}
   upgradeDetails:
   - cost: 0
-    unitMaxHealth: 300
+    unitMaxHealth: 250
     unitDamage: 30
     isGoldUpgrade: 0
     isGemUpgrade: 1
