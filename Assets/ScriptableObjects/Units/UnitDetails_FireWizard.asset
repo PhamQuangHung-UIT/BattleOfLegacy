@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52d18ac57f9a9dc48b58d5471c3d8103, type: 3}
-  m_Name: UnitDetails_Wizard
+  m_Name: UnitDetails_FireWizard
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: 2ff454f7ac6739d48916061d8b27fd27, type: 3}
   unitName: Fire Wizard
   unitDescription: Mastery of fire
-  isRangeUnit: 0
-  attackProjectile: {fileID: 0}
-  manaCost: 150
+  isRangeUnit: 1
+  attackProjectile: {fileID: 11400000, guid: c5baec1bc240ced48a5a0d8c55cf1428, type: 2}
+  castProjectileRelativePosition: 0.5
+  manaCost: 70
   cooldownInterval: 10
   attackSpeed: 0.8
   attackSFX: {fileID: 11400000, guid: e6861c0848837a64c844beb990dffcae, type: 2}
@@ -25,7 +26,7 @@ MonoBehaviour:
   attackAnimationDelay: 0.7
   critStrikeChance: 0
   critStrikeDamage: 0
-  attackRange: 10
+  attackRange: 2
   movementSpeed: 4
   animationController: {fileID: 22100000, guid: 893379a966cb51849bcff3391839cbd2, type: 2}
   upgradeDetails:

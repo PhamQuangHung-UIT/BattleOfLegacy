@@ -17,6 +17,7 @@ MonoBehaviour:
   unitDescription: 
   isRangeUnit: 0
   attackProjectile: {fileID: 0}
+  castProjectileRelativePosition: 0.5
   manaCost: 20
   cooldownInterval: 0
   attackSpeed: 0.8
@@ -25,7 +26,7 @@ MonoBehaviour:
   attackAnimationDelay: 0.75
   critStrikeChance: 0
   critStrikeDamage: 0
-  attackRange: 1
+  attackRange: 2
   movementSpeed: 4
   animationController: {fileID: 22100000, guid: 87ce035a77098e54eba231db82ff796f, type: 2}
   upgradeDetails:

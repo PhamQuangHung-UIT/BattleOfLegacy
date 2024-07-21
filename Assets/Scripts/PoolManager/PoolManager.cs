@@ -57,7 +57,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
 
             for (int i = 0; i < poolSize; i++)
             {
-                GameObject newObject = Instantiate(prefab, parentGameObject.transform);
+                GameObject newObject = Instantiate(prefab, prefab.transform.position, prefab.transform.rotation, parentGameObject.transform);
 
                 newObject.SetActive(false);
 

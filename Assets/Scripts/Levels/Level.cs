@@ -42,6 +42,8 @@ public class Level : SingletonMonoBehaviour<Level>
  
     private void Update()
     {
+        if (isGameEnded) return;
+
         currentMana += manaPerSecond * Time.deltaTime;
         if (currentMana > maxMana)
         {

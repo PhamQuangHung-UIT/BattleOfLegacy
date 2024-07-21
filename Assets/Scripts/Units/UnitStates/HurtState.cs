@@ -7,6 +7,7 @@ public class HurtState : UnitBaseState
 
     public override void Enter()
     {
+        time = 0;
         animEvent.CallOnStartUnitAnim(UnitState.Hurt, 1);   
     }
 
@@ -15,7 +16,7 @@ public class HurtState : UnitBaseState
         time += Time.deltaTime;
         if (time > 0.5f)
         {
-            nextState = ai.GetState(UnitState.Idle);
+            nextState = ai.GetState(UnitState.Run);
             currentStateEvent = StateEvent.Exit;
         }
         base.Update();

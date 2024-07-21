@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class HealthBarUI : MonoBehaviour
 {
     Image mask;
+    public Image healthBar;
     [HideInInspector] public float value;
     [HideInInspector] public float originWidth;
 
@@ -16,7 +17,7 @@ public class HealthBarUI : MonoBehaviour
 
     public void Initialized(bool isEnemy)
     {
-        mask.color = isEnemy ? GameConsts.enemyHealthbarColor : GameConsts.playerHealthbarColor;
+        healthBar.color = isEnemy ? GameConsts.enemyHealthbarColor : GameConsts.playerHealthbarColor;
     }
 
     public void SetValue(float value)

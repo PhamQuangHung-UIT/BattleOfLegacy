@@ -47,9 +47,9 @@ public class AttackState : UnitBaseState
                 float attackStrikeDelay = unit.unitDetails.attackAnimationDelay * unit.currentAttackSpeed / unit.unitDetails.strikesPerAttack;
                 for (int i = 0; i < unit.unitDetails.strikesPerAttack; i++)
                 {
-                    SoundManager.Instance.PlaySound(unit.unitDetails.attackSFX);
                     // Wait for animation delay time end
                     yield return new WaitForSeconds(attackStrikeDelay);
+                    SoundManager.Instance.PlaySound(unit.unitDetails.attackSFX);
                     if (!CanAttackTarget())
                         break;
                     if (unit.unitDetails.isRangeUnit)

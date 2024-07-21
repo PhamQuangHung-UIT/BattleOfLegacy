@@ -29,11 +29,22 @@ public class UnitBaseStatsSO : ScriptableObject
     #endregion
     public bool isRangeUnit;
 
+    #region Header
+    [Header("Range Attrbute")]
+    #endregion
     #region Tooltip
     [Tooltip("Projectile of base attack that is used by range unit only")]
     #endregion
     public ProjectileSO attackProjectile;
 
+    #region Tooltip
+    [Tooltip("Come out Y position of the projectile that relative to unit's height")]
+    #endregion
+    public float castProjectileRelativePosition = 0.5f;
+
+    #region Header
+    [Header("Basic Stats")]
+    #endregion
     #region Tooltip
     [Tooltip("Mana cost of the unit to be cast")]
     #endregion
@@ -133,10 +144,13 @@ public class UnitBaseStatsSO : ScriptableObject
     [Tooltip("List of unit stats")]
     #endregion
     public UnitUpgradeDetails[] upgradeDetails;
+
     #region UNITY EDITOR
 #if UNITY_EDITOR
     private void OnValidate()
     {
+        if (attackProjectile != null)
+            isRangeUnit = true;
         if (upgradeDetails != null)
         {
             foreach (var upgrade in upgradeDetails)

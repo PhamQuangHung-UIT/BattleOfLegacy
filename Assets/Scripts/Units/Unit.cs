@@ -24,11 +24,15 @@ public class Unit : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public List<EffectSO> effectList = new();
 
+    UnitEvent unitEvent;
     SpriteRenderer spriteRenderer;
+    new BoxCollider2D collider;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<BoxCollider2D>();
+        unitEvent = GetComponent<UnitEvent>();
     }
 
     public void Initialized(UnitBaseStatsSO stats, int unitLevel, bool isEnemy)
@@ -49,12 +53,32 @@ public class Unit : MonoBehaviour
     {
         gameObject.layer = isEnemy ? LayerMask.NameToLayer("Enemy") : LayerMask.NameToLayer("Player");
         spriteRenderer.flipX = isEnemy;
+        collider.enabled = true;
+        unitEvent.OnDeath += UnitEvent_OnDeath;
+    }
+
+    private void UnitEvent_OnDeath(EventArgs args)
+    {
+        collider.enabled = false;
     }
 
     private void OnDisable()
     {
         effectList.Clear();
     }
+
+
+    // FixedUpdate
+    private void FixedUpdate()
+    {
+        if (spriteRenderer.sprite)
+        {
+            collider.size = spriteRenderer.sprite.bounds.size * 0.7f;
+            collider.offset = new(0, collider.size.y / 2);
+        }
+    }
+
+
 
     public float GetEffectValue<T>(ValueType valueType) where T: EffectSO
     {

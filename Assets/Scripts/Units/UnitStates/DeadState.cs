@@ -15,7 +15,7 @@ public class DeadState : UnitBaseState
 
     private IEnumerator DisableUnit()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         unit.gameObject.SetActive(false);
     }
 

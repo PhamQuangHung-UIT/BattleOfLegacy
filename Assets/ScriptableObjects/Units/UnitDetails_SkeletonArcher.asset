@@ -17,12 +17,13 @@ MonoBehaviour:
   unitDescription: 
   isRangeUnit: 1
   attackProjectile: {fileID: 11400000, guid: 9f3b990c2d596af4bbb96d9145523906, type: 2}
+  castProjectileRelativePosition: 0.45
   manaCost: 30
   cooldownInterval: 0
-  attackSpeed: 0.7
+  attackSpeed: 0.8
   attackSFX: {fileID: 11400000, guid: aa2456bb6bc381f4f9db79890d367f36, type: 2}
   strikesPerAttack: 1
-  attackAnimationDelay: 0.7
+  attackAnimationDelay: 1
   critStrikeChance: 0
   critStrikeDamage: 0
   attackRange: 15

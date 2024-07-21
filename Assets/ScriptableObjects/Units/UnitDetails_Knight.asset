@@ -17,15 +17,16 @@ MonoBehaviour:
   unitDescription: A fellow brave knight
   isRangeUnit: 0
   attackProjectile: {fileID: 0}
+  castProjectileRelativePosition: 0.5
   manaCost: 20
   cooldownInterval: 5
   attackSpeed: 1
   attackSFX: {fileID: 11400000, guid: e6861c0848837a64c844beb990dffcae, type: 2}
   strikesPerAttack: 3
-  attackAnimationDelay: 1.2
+  attackAnimationDelay: 1.1
   critStrikeChance: 0
   critStrikeDamage: 0
-  attackRange: 1
+  attackRange: 2
   movementSpeed: 6
   animationController: {fileID: 22100000, guid: b00053bb9ca59c74ab70bc6f023994f8, type: 2}
   upgradeDetails:
