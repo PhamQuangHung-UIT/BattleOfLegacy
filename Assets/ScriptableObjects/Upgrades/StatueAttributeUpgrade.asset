@@ -16,36 +16,36 @@ MonoBehaviour:
   statueHealthUpgradeTitle: Max Health Increase
   statueHealthIcon: {fileID: 21300000, guid: d5abe6941c64c6443ad04c48843ca3f8, type: 3}
   statueHealthPerLevelDetails:
-  - amount: 250
+  - amount: 500
     isGemUpgrade: 0
     upgradeCost: 0
-  - amount: 400
+  - amount: 700
     isGemUpgrade: 0
     upgradeCost: 500
-  - amount: 600
+  - amount: 1000
     isGemUpgrade: 0
     upgradeCost: 1000
-  - amount: 750
+  - amount: 1500
     isGemUpgrade: 0
     upgradeCost: 2500
-  - amount: 1050
+  - amount: 2000
     isGemUpgrade: 0
     upgradeCost: 5000
-  - amount: 1400
+  - amount: 3000
     isGemUpgrade: 0
     upgradeCost: 10000
-  - amount: 1800
+  - amount: 5000
     isGemUpgrade: 0
     upgradeCost: 25000
-  - amount: 2250
+  - amount: 7500
     isGemUpgrade: 0
     upgradeCost: 50000
-  - amount: 2750
+  - amount: 10000
     isGemUpgrade: 0
     upgradeCost: 100000
-  - amount: 3300
+  - amount: 15000
     isGemUpgrade: 0
-    upgradeCost: 250000
+    upgradeCost: 200000
   statueHealthDescription: Increase statue max health
   maxManaTitle: Max mana
   maxManaUpgradeTitle: Max Mana Increase
@@ -83,22 +83,25 @@ MonoBehaviour:
   - amount: 3
     isGemUpgrade: 0
     upgradeCost: 0
-  - amount: 6
+  - amount: 5
     isGemUpgrade: 0
     upgradeCost: 1000
-  - amount: 9
+  - amount: 7
     isGemUpgrade: 0
     upgradeCost: 3000
-  - amount: 12
+  - amount: 10
     isGemUpgrade: 0
     upgradeCost: 5000
-  - amount: 15
+  - amount: 13
     isGemUpgrade: 0
     upgradeCost: 10000
-  - amount: 20
+  - amount: 16
     isGemUpgrade: 0
     upgradeCost: 50000
-  - amount: 30
+  - amount: 20
+    isGemUpgrade: 0
+    upgradeCost: 100000
+  - amount: 25
     isGemUpgrade: 0
     upgradeCost: 100000
   manaRecoverSpeedDescription: Increase mana recovering speed

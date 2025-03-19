@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-
-public class UpgradeManager : SingletonMonoBehaviour<UpgradeManager>
+﻿public class UpgradeManager : SingletonMonoBehaviour<UpgradeManager>
 {
     public const string fileName = "upgrades.dat";
 

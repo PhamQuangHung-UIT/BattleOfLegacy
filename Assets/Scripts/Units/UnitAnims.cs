@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEditor.Animations;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(UnitAnimEvent))]
@@ -64,36 +60,36 @@ public class UnitAnim : MonoBehaviour
         }
     }
 
-/*    private void AnimEvent_OnStopUnitAnim(AnimArgs args)
-    {
-        switch (args.typeAnim)
+    /*    private void AnimEvent_OnStopUnitAnim(AnimArgs args)
         {
-            case UnitState.Idle:
-                IdleStop();
-                break;
-            case UnitState.Run:
-                RunStop();
-                break;
-            case UnitState.Attack:
-                AttackStop();
-                break;
-            case UnitState.Hurt:
-                HurtStop();
-                break;
-            case UnitState.FirstSkill:
-                FirstSkillStop();
-                break;
-            case UnitState.SecondSkill:
-                SecondSkillStop();
-                break;
-            case UnitState.Dead:
-                DeadStop();
-                break;
-            default:
-                Debug.Log("Unexpected unit state");
-                break;
-        }
-    }*/
+            switch (args.typeAnim)
+            {
+                case UnitState.Idle:
+                    IdleStop();
+                    break;
+                case UnitState.Run:
+                    RunStop();
+                    break;
+                case UnitState.Attack:
+                    AttackStop();
+                    break;
+                case UnitState.Hurt:
+                    HurtStop();
+                    break;
+                case UnitState.FirstSkill:
+                    FirstSkillStop();
+                    break;
+                case UnitState.SecondSkill:
+                    SecondSkillStop();
+                    break;
+                case UnitState.Dead:
+                    DeadStop();
+                    break;
+                default:
+                    Debug.Log("Unexpected unit state");
+                    break;
+            }
+        }*/
 
 
     public void IdleStart()
@@ -122,7 +118,8 @@ public class UnitAnim : MonoBehaviour
 
     //public void AttackStop() => anim.SetBool("Attack", false);
 
-    public void HurtStart() {
+    public void HurtStart()
+    {
         anim.SetBool("Idle", false);
         anim.SetBool("Attack", false);
         anim.SetBool("Hurt", true);
@@ -134,7 +131,7 @@ public class UnitAnim : MonoBehaviour
 
     //public void HurtStop() => anim.SetBool("Hurt", false);
 
-    public void RunStart() 
+    public void RunStart()
     {
         anim.SetBool("Idle", false);
         anim.SetBool("Attack", false);
@@ -190,7 +187,7 @@ public class UnitAnim : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        
+
     }
 #endif
     #endregion

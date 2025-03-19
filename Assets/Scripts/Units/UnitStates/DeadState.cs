@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DeadState : UnitBaseState
 {
-    public DeadState(Unit unit) : base(unit) 
+    public DeadState(Unit unit) : base(unit)
     { }
 
     public override void Enter()

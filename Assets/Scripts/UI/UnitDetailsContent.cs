@@ -1,10 +1,9 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class UnitDetailsContent: MonoBehaviour
+public class UnitDetailsContent : MonoBehaviour
 {
     [SerializeField] GameObject attributeParent;
     [SerializeField] CustomAttributeView attributeViewPrefab;
@@ -57,7 +56,8 @@ public class UnitDetailsContent: MonoBehaviour
                 upgradeValueUI.text = $"{unitDetail.upgradeDetails[level + 1].cost:g}";
                 upgradeValueUI.color = unitDetail.upgradeDetails[level + 1].isGemUpgrade ? settings.gemValueColor : settings.goldValueColor;
                 upgradeIcon.sprite = unitDetail.upgradeDetails[level + 1].isGemUpgrade ? settings.gemIcon : settings.goldIcon;
-            } else
+            }
+            else
             {
                 upgradeTitleUI.gameObject.SetActive(false);
                 upgradeButton.gameObject.SetActive(false);
@@ -65,7 +65,7 @@ public class UnitDetailsContent: MonoBehaviour
 
             // Set up attributes
             CustomAttributeView attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
-            attributeView.SetUp("Max Health", unitDetail.upgradeDetails[level].unitMaxHealth, ValueType.Absolute,settings.healthIcon);
+            attributeView.SetUp("Max Health", unitDetail.upgradeDetails[level].unitMaxHealth, ValueType.Absolute, settings.healthIcon);
             attributeView.SetColor(settings.maxHealthAttributeColor);
 
             attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
@@ -83,7 +83,8 @@ public class UnitDetailsContent: MonoBehaviour
             attributeView = Instantiate(attributeViewPrefab, attributeParent.transform);
             attributeView.SetUp("Speed", unitDetail.movementSpeed, ValueType.Absolute, settings.speedIcon);
             attributeView.SetColor(settings.defaultAttributeColor);
-        } else
+        }
+        else
         {
             unitLevelTextUI.gameObject.SetActive(false);
 
@@ -104,7 +105,8 @@ public class UnitDetailsContent: MonoBehaviour
             GameManager.Instance.playerData.currentGold -= upgradeDetails.cost;
             level++;
             UpgradeManager.Instance.UpgradeUnit(unitDetail.unitName, level);
-        } else if (GameManager.Instance.playerData.currentGem > upgradeDetails.cost)
+        }
+        else if (GameManager.Instance.playerData.currentGem > upgradeDetails.cost)
         {
             GameManager.Instance.playerData.currentGem -= upgradeDetails.cost;
             level++;

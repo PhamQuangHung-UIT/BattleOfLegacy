@@ -14,8 +14,9 @@ public class SpellSlotPanel : SlotPanel
             {
                 slot.SetIcon(spells[i].spellDetails.image);
                 slot.SetCooldownDuration(spells[i].spellDetails.spellCooldown);
-                slot.SetCost((int)spells[i].spellDetails.manaCost);
-            } else slot.RemoveSlot();
+                slot.SetCost((int) spells[i].spellDetails.manaCost);
+            }
+            else slot.RemoveSlot();
         }
     }
 

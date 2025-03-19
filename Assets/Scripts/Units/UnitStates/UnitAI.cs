@@ -33,7 +33,7 @@ public class UnitAI : MonoBehaviour
         unitEvent.OnDeath += UnitEvent_OnDeath;
     }
 
-    private void OnDisable() 
+    private void OnDisable()
     {
         unitEvent.OnHurt -= UnitEvent_OnHurt;
         unitEvent.OnDeath -= UnitEvent_OnDeath;

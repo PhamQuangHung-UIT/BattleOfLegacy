@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameManagerSettings_",menuName = "Scriptable Objects/GameManager/GameManagerSettings")]
-public class GameManagerSettingsSO: ScriptableObject
+[CreateAssetMenu(fileName = "GameManagerSettings_", menuName = "Scriptable Objects/GameManager/GameManagerSettings")]
+public class GameManagerSettingsSO : ScriptableObject
 {
     [System.Serializable]
     public struct LevelMusicPair

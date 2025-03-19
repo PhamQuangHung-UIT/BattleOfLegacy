@@ -15,7 +15,8 @@ public class DealDamageEffectSO : EffectSO
         if (valueType == ValueType.Absolute)
         {
             target.currentBaseDamage += amount;
-        } else
+        }
+        else
         {
             target.currentBaseDamage += (target.baseDamage * amount / 100);
         }

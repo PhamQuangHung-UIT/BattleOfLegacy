@@ -21,4 +21,4 @@ public class CooldownControllerEvent : MonoBehaviour
 public class CooldownEventArgs : EventArgs
 {
     public float timeInterval;
-} 
+}

@@ -31,8 +31,8 @@ MonoBehaviour:
   animationController: {fileID: 22100000, guid: 0170c329b3e6b064aaa372103ac270bb, type: 2}
   upgradeDetails:
   - cost: 0
-    unitMaxHealth: 200
-    unitDamage: 40
+    unitMaxHealth: 150
+    unitDamage: 35
     isGoldUpgrade: 1
     isGemUpgrade: 0
     unlockFirstSkill: 0

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [DisallowMultipleComponent]
 public class LevelManager : SingletonMonoBehaviour<LevelManager>
@@ -11,14 +10,15 @@ public class LevelManager : SingletonMonoBehaviour<LevelManager>
     public LevelDetailsSO[] levelDetails;
     public LevelManagerSerializableData data;
 
-    public LevelManager() {
+    public LevelManager()
+    {
         data = new LevelManagerSerializableData();
     }
 
     private void Start()
     {
         StorageUtils.Load(data, fileName);
-        DontDestroyOnLoad(this);        
+        DontDestroyOnLoad(this);
     }
 
     public void Save(int selectedLevel)

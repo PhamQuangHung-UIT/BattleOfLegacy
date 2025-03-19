@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class StatueAttributeContent: MonoBehaviour
+public class StatueAttributeContent : MonoBehaviour
 {
     [SerializeField] GameObject attributeParent;
     [SerializeField] CustomAttributeView attributeViewPrefab;
@@ -57,7 +57,8 @@ public class StatueAttributeContent: MonoBehaviour
                 upgradeValueUI.text = $"{statueAttributeDetails.upgradeDetails[level + 1].upgradeCost:g}";
                 upgradeValueUI.color = statueAttributeDetails.upgradeDetails[level + 1].isGemUpgrade ? settings.gemValueColor : settings.goldValueColor;
                 upgradeIcon.sprite = statueAttributeDetails.upgradeDetails[level + 1].isGemUpgrade ? settings.gemIcon : settings.goldIcon;
-            } else
+            }
+            else
             {
                 upgradeTitleUI.gameObject.SetActive(false);
                 upgradeButton.gameObject.SetActive(false);
@@ -68,7 +69,8 @@ public class StatueAttributeContent: MonoBehaviour
             attributeView.SetUp(statueAttributeDetails.title, statueAttributeDetails.upgradeDetails[level].amount, statueAttributeDetails.valueType, statueAttributeDetails.icon);
             attributeView.SetColor(settings.statueAttributeColor);
 
-        } else
+        }
+        else
         {
             statueAttributeLevelTextUI.gameObject.SetActive(false);
 
@@ -90,7 +92,8 @@ public class StatueAttributeContent: MonoBehaviour
         if (upgradeDetails.isGemUpgrade)
         {
             GameManager.Instance.playerData.currentGem -= upgradeDetails.upgradeCost;
-        } else
+        }
+        else
         {
             GameManager.Instance.playerData.currentGold -= upgradeDetails.upgradeCost;
         }

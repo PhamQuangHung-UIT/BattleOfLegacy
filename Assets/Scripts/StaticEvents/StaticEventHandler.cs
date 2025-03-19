@@ -39,10 +39,10 @@ public static class StaticEventHandler
     }
 }
 
-public class CastSpellArgs: EventArgs
+public class CastSpellArgs : EventArgs
 {
     public SpellBase spell;
-} 
+}
 
 public class OnReceiveGoldEventArgs : EventArgs
 {

@@ -8,7 +8,7 @@ public class HurtState : UnitBaseState
     public override void Enter()
     {
         time = 0;
-        animEvent.CallOnStartUnitAnim(UnitState.Hurt, 1);   
+        animEvent.CallOnStartUnitAnim(UnitState.Hurt, 1);
     }
 
     public override void Update()

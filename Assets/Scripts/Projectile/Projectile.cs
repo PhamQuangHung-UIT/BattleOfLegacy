@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class Projectile: MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     float damage = 0;
     ProjectileSO projectileDetails;
@@ -55,7 +54,8 @@ public class Projectile: MonoBehaviour
         {
             transform.Translate(movement);
             Debug.Log("Projectile pos:" + transform.position);
-        } else if (remainTraversal <= 0)
+        }
+        else if (remainTraversal <= 0)
         {
             gameObject.SetActive(false);
         }

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   maxProjectileRange: 20
-  speed: 30
+  speed: 40
   size: {x: 1, y: 0.5}
-  splashRadius: 2
+  splashRadius: 2.5
   animatorController: {fileID: 22100000, guid: e42dd46671ca5e4489b933121f18b56d, type: 2}
   attachedEffect: {fileID: 0}

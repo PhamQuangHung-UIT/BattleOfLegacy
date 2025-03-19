@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -20,7 +19,7 @@ public class CustomSlider : MonoBehaviour
 
     public void SetValue(float value)
     {
-        currentIndex = (int)(value * 10);
+        currentIndex = (int) (value * 10);
         onValueChange?.Invoke(currentIndex / 10f);
     }
 

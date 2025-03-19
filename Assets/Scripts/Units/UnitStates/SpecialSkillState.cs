@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public abstract class SpecialSkillState : UnitBaseState
+﻿public abstract class SpecialSkillState : UnitBaseState
 {
     /// <summary>
     /// Specify whenether the skill is unlocked
@@ -21,4 +19,4 @@ public abstract class SpecialSkillState : UnitBaseState
     /// Implement this method for special skill. Can be called if PreCondition() return true
     /// </summary>
     public abstract void ApplySkill();
-} 
+}

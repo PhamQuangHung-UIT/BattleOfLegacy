@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
 public class Parallax : MonoBehaviour
 {
@@ -24,7 +21,7 @@ public class Parallax : MonoBehaviour
     void Update()
     {
         Vector2 relative_pos = cam.transform.position * parallaxValue;
-        Vector3 dist = cam.transform.position - (Vector3)relative_pos;
+        Vector3 dist = cam.transform.position - (Vector3) relative_pos;
         if (dist.x > startPos.x + length)
         {
             startPos.x += length;
@@ -33,6 +30,6 @@ public class Parallax : MonoBehaviour
         {
             startPos.x -= length;
         }
-        transform.position = startPos + (Vector3)relative_pos;
+        transform.position = startPos + (Vector3) relative_pos;
     }
 }

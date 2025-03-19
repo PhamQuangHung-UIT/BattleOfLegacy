@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class UpgradeSerializableData : ISerializable
@@ -66,7 +65,7 @@ public class UpgradeSerializableData : ISerializable
         writer.Write(unitLevels.Count);
         foreach (var unit in unitLevels)
         {
-            writer.Write(unit.Key); 
+            writer.Write(unit.Key);
             writer.Write(unit.Value);
         }
         writer.Write(spellLevels.Count);

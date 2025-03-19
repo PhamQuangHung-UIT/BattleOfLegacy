@@ -1,10 +1,9 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-public class SpellDetailsContent: MonoBehaviour
+public class SpellDetailsContent : MonoBehaviour
 {
     [SerializeField] GameObject attributeParent;
     [SerializeField] CustomAttributeView attributeViewPrefab;
@@ -57,7 +56,8 @@ public class SpellDetailsContent: MonoBehaviour
                 upgradeValueUI.text = $"{spellDetails.spellUpgradeList[level + 1].cost:g}";
                 upgradeValueUI.color = spellDetails.spellUpgradeList[level + 1].isGemUpgrade ? settings.gemValueColor : settings.goldValueColor;
                 upgradeIcon.sprite = spellDetails.spellUpgradeList[level + 1].isGemUpgrade ? settings.gemIcon : settings.goldIcon;
-            } else
+            }
+            else
             {
                 upgradeTitleUI.gameObject.SetActive(false);
                 upgradeButton.gameObject.SetActive(false);
@@ -71,7 +71,8 @@ public class SpellDetailsContent: MonoBehaviour
                 attributeView.SetColor(settings.maxHealthAttributeColor);
             }
 
-        } else
+        }
+        else
         {
             spellLevelTextUI.gameObject.SetActive(false);
 
@@ -92,7 +93,8 @@ public class SpellDetailsContent: MonoBehaviour
         if (upgradeDetails.isGoldUpgrade)
         {
             GameManager.Instance.playerData.currentGold -= upgradeDetails.cost;
-        } else
+        }
+        else
         {
             GameManager.Instance.playerData.currentGem -= upgradeDetails.cost;
         }

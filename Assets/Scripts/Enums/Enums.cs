@@ -59,4 +59,4 @@ public enum Theme
 public enum GridViewType
 {
     Unit, Spell, Other
-} 
+}

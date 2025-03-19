@@ -7,7 +7,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class UnitEvent : MonoBehaviour
 {
-    public event Action<EventArgs> OnHurt; 
+    public event Action<EventArgs> OnHurt;
 
     public void CallOnHurt()
     {

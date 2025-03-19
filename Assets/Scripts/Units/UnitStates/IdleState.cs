@@ -1,9 +1,9 @@
 public class IdleState : UnitBaseState
 {
 
-    public IdleState(Unit unit) : base(unit) 
+    public IdleState(Unit unit) : base(unit)
     {
-        
+
     }
 
     public override void Enter()
@@ -17,8 +17,8 @@ public class IdleState : UnitBaseState
         base.Update();
     }
 
-    public override void Exit() 
-    { 
+    public override void Exit()
+    {
         base.Exit();
         //animEvent.CallOnStopUnitAnim(UnitState.Idle);
     }

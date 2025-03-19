@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 [DisallowMultipleComponent]
 public class AlignmentManager : MonoBehaviour
@@ -23,7 +21,7 @@ public class AlignmentManager : MonoBehaviour
         spellAlignment = new(GameManager.Instance.playerData.playerAlignment.spellAlignment);
         unitAlignmentSlots = unitAlignmentUI.GetComponentsInChildren<AlignmentSlot>();
         spellAlignmentSlots = spellAlignmentUI.GetComponentsInChildren<AlignmentSlot>();
-        maxSpellSlot = (int)UpgradeManager.Instance.statueUpgradeDetails.maxSpellSlotPerLevelDetails[UpgradeManager.Instance.data.statueAttributeLevels["maxSpellSlot"]].amount;
+        maxSpellSlot = (int) UpgradeManager.Instance.statueUpgradeDetails.maxSpellSlotPerLevelDetails[UpgradeManager.Instance.data.statueAttributeLevels["maxSpellSlot"]].amount;
 
         foreach (var u in GameManager.Instance.settings.allObtainableUnit)
         {
@@ -83,7 +81,8 @@ public class AlignmentManager : MonoBehaviour
                 unitAlignmentSlots[i].SetItem(unitAlignment[i].image);
                 unitAlignmentSlots[i].button.onClick.RemoveAllListeners();
                 unitAlignmentSlots[i].button.onClick.AddListener(() => RemoveItem(unitAlignment[index]));
-            } else
+            }
+            else
             {
                 unitAlignmentSlots[i].RemoveItem();
             }
@@ -97,7 +96,8 @@ public class AlignmentManager : MonoBehaviour
                 spellAlignmentSlots[i].SetItem(spellAlignment[i].spellDetails.image);
                 spellAlignmentSlots[i].button.onClick.RemoveAllListeners();
                 spellAlignmentSlots[i].button.onClick.AddListener(() => RemoveItem(spellAlignment[index]));
-            } else
+            }
+            else
             {
                 spellAlignmentSlots[i].RemoveItem();
             }

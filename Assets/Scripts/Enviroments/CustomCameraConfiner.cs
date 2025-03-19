@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CustomCameraConfiner : MonoBehaviour
 {
-    [SerializeField]Collider2D confiner;
+    [SerializeField] Collider2D confiner;
     private CinemachineVirtualCamera vcam;
     private float halfViewLength;
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class CustomCameraConfiner : MonoBehaviour
 
     void LateUpdate()
     {
-        float ratio = (float)Screen.width / Screen.height;
+        float ratio = (float) Screen.width / Screen.height;
         float minXPos = confiner.bounds.min.x + ratio * halfViewLength;
         float maxXPos = confiner.bounds.max.x - ratio * halfViewLength;
         float xPos = Mathf.Clamp(transform.position.x, minXPos, maxXPos);

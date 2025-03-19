@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public static class StorageUtils
@@ -41,4 +39,4 @@ public static class StorageUtils
 
         return true;
     }
-} 
+}

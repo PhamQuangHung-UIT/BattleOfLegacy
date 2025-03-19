@@ -14,7 +14,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
     private readonly Dictionary<string, GameObject> prefabDictionary = new();
     public readonly Dictionary<string, GameObject> anchorDictionary = new();
 
-    [System.Serializable]
+    [Serializable]
     public struct Pool
     {
         public GameObject prefab;
@@ -93,7 +93,7 @@ public class PoolManager : SingletonMonoBehaviour<PoolManager>
     /// <summary>
     /// Get a gameobject component from the pool using the 'poolKey'
     /// </summary>
-    private T GetComponentFromPool<T>(string componentType) where T: Component
+    private T GetComponentFromPool<T>(string componentType) where T : Component
     {
         T componentToReuse = poolDictionary[componentType].Dequeue() as T;
         poolDictionary[componentType].Enqueue(componentToReuse);

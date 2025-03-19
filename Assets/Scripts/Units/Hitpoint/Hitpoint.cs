@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -49,7 +47,8 @@ class Hitpoint : MonoBehaviour
         {
             isHurt = RandomizeHurtState(hitpointValue);
             unit.currentHealth = Mathf.Clamp(unit.currentHealth + hitpointValue, 0, unit.maxHealth);
-        } else // Damage
+        }
+        else // Damage
         {
             lastDamageTaken += hitpointValue;
             unit.currentHealth += hitpointValue;
@@ -61,7 +60,8 @@ class Hitpoint : MonoBehaviour
             unitEvent.CallOnDead();
             unit.isDead = true;
             healthBar.gameObject.SetActive(false);
-        } else
+        }
+        else
         {
             if (isHurt)
                 unitEvent.CallOnHurt();
@@ -114,7 +114,8 @@ class Hitpoint : MonoBehaviour
         {
             value += unit.GetEffectValue<ReceiveDamageEffectSO>(ValueType.Absolute);
             value += unit.GetEffectValue<ReceiveDamageEffectSO>(ValueType.Percentage) * value / 100;
-        } else 
+        }
+        else
         {
             value += unit.GetEffectValue<HealEffectSO>(ValueType.Absolute);
             value += unit.GetEffectValue<HealEffectSO>(ValueType.Percentage) * value / 100;

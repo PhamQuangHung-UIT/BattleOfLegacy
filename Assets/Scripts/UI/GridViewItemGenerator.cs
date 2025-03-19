@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -63,6 +61,7 @@ public class GridViewItemGenerator : MonoBehaviour
         if (hasUnlocked)
         {
             gridViewItem.cover.color = GameConsts.transparent;
-        } else gridViewItem.cover.color = GameManager.Instance.settings.disableColorForCover;
+        }
+        else gridViewItem.cover.color = GameManager.Instance.settings.disableColorForCover;
     }
 }

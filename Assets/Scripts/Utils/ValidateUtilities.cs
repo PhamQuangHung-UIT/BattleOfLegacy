@@ -22,7 +22,8 @@ public static class ValidateUtilities
         try
         {
             action.Invoke();
-        } catch (Exception)
+        }
+        catch (Exception)
         {
             Debug.Log(message);
         }

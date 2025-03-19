@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RunState : UnitBaseState
 {
 
-    public RunState(Unit unit) : base(unit) 
+    public RunState(Unit unit) : base(unit)
     {
     }
 
@@ -23,7 +21,9 @@ public class RunState : UnitBaseState
         {
             nextState = (ai.GetState(UnitState.Attack) as AttackState).Start(currentTarget);
             currentStateEvent = StateEvent.Exit;
-        } else {
+        }
+        else
+        {
             float hasteValue = unit.GetEffectValue<HasteEffectSO>(ValueType.Percentage) / 100f;
             Vector3 dir = new(unit.unitDetails.movementSpeed * (1 + hasteValue) * (unit.isEnemy ? -Time.deltaTime : Time.deltaTime), 0, 0);
             unit.transform.Translate(dir);

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -76,7 +75,7 @@ public class AttackState : UnitBaseState
         currentStateEvent = StateEvent.Exit;
     }
 
-    private bool CanAttackTarget() => 
+    private bool CanAttackTarget() =>
         opponentStatue != null && opponentStatue.currentHealth > 0 || targetUnit != null && !targetUnit.isDead;
 
     public override void Exit()

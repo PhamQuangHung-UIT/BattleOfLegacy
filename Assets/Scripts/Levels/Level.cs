@@ -12,7 +12,7 @@ public class Level : SingletonMonoBehaviour<Level>
 
     [HideInInspector] public LevelDetailsSO levelDetails;
 
-    [HideInInspector] 
+    [HideInInspector]
     public List<Unit> unitList = new();
 
     [Header("Enviroment")]
@@ -39,7 +39,7 @@ public class Level : SingletonMonoBehaviour<Level>
         GetLevelDetail();
         manaPerSecondText.text = manaPerSecond + " mana/s";
     }
- 
+
     private void Update()
     {
         if (isGameEnded) return;
@@ -49,7 +49,7 @@ public class Level : SingletonMonoBehaviour<Level>
         {
             currentMana = maxMana;
         }
-        currentManaText.text = (int)currentMana + "/" + (int)maxMana;
+        currentManaText.text = (int) currentMana + "/" + (int) maxMana;
         goldGainedText.text = goldGained.ToString();
     }
 
@@ -78,7 +78,7 @@ public class Level : SingletonMonoBehaviour<Level>
     {
         bool isEnemy = enemyDetails != null;
         Vector3 spawnPos = isEnemy ? enemySpawnPos : playerSpawnPos;
-        Unit unit = PoolManager.Instance.ReuseComponent<Unit>( 
+        Unit unit = PoolManager.Instance.ReuseComponent<Unit>(
                                 spawnPos, Quaternion.identity);
         int unitLevel;
         if (!isEnemy)
@@ -103,7 +103,7 @@ public class Level : SingletonMonoBehaviour<Level>
 
     private void OnReceiveGold(OnReceiveGoldEventArgs args)
     {
-        goldGained += (int)(args.amount * goldGainedRate);
+        goldGained += (int) (args.amount * goldGainedRate);
     }
 
     private void OnDefeat(EventArgs args)

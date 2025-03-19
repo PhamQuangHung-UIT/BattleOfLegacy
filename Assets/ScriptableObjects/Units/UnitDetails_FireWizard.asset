@@ -26,7 +26,7 @@ MonoBehaviour:
   attackAnimationDelay: 0.7
   critStrikeChance: 0
   critStrikeDamage: 0
-  attackRange: 2
+  attackRange: 15
   movementSpeed: 4
   animationController: {fileID: 22100000, guid: 893379a966cb51849bcff3391839cbd2, type: 2}
   upgradeDetails:

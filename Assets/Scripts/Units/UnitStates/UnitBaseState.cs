@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class UnitBaseState
 {
     public enum StateEvent { Enter, Update, Exit }

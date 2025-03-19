@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StatueAttributeUpgrade", menuName = "Scriptable Objects/Statue/StatueAttributeUpgrade")]
@@ -43,7 +42,7 @@ public class StatueAttributeUpgradeSO : ScriptableObject
 
     public StatueAttributeUpgrade[] statueHealthPerLevelDetails;
 
-    public string statueHealthDescription  = "Increase statue max health";
+    public string statueHealthDescription = "Increase statue max health";
 
     // Max mana
     public string maxManaTitle = "Max mana";

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,7 +79,7 @@ public class Unit : MonoBehaviour
 
 
 
-    public float GetEffectValue<T>(ValueType valueType) where T: EffectSO
+    public float GetEffectValue<T>(ValueType valueType) where T : EffectSO
     {
         float res = 0;
         foreach (var e in effectList)

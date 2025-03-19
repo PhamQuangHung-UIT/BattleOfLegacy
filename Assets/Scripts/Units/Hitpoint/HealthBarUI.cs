@@ -12,7 +12,7 @@ public class HealthBarUI : MonoBehaviour
     {
         mask = GetComponentInChildren<Mask>().gameObject.GetComponent<Image>();
         originWidth = mask.rectTransform.rect.width;
-    
+
     }
 
     public void Initialized(bool isEnemy)

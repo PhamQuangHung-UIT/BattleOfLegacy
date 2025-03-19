@@ -2,7 +2,7 @@
 
 public class UnitSlotPanel : SlotPanel
 {
-   List<UnitBaseStatsSO> units;
+    List<UnitBaseStatsSO> units;
 
     protected override void Awake()
     {
@@ -15,7 +15,7 @@ public class UnitSlotPanel : SlotPanel
             {
                 slot.SetIcon(units[i].image);
                 slot.SetCooldownDuration(units[i].cooldownInterval);
-                slot.SetCost((int)units[i].manaCost);
+                slot.SetCost((int) units[i].manaCost);
             }
             else slot.RemoveSlot();
         }
